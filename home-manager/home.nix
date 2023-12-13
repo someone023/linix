@@ -53,8 +53,8 @@
   };
 
   # Add stuff for your user as you see fit:
-  # programs.neovim.enable = true;
-  # home.packages = with pkgs; [ steam ];
+  programs.neovim.enable = true;
+  home.packages = with pkgs; [ wget curl kitty firefox ];
 
   # Enable home-manager and git
   programs.home-manager.enable = true;
@@ -66,6 +66,21 @@
     ll = "ls -l";
   };
 };
+
+
+  wayland.windowManager.sway = {
+    enable = true;
+    config = rec {
+      modifier = "Mod4";
+      # Use kitty as default terminal
+      terminal = "kitty"; 
+      startup = [
+        # Launch Firefox on start
+        {command = "firefox";}
+      ];
+    };
+  };
+
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";

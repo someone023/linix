@@ -79,13 +79,13 @@
   console.keyMap = "us";
 
 
-  networking.hostName = "linux";
+  networking.hostName = "linix";
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
     # Enable CUPS to print documents.
-  services.printing.enable = true;
+  # services.printing.enable = true;
 
   # Enable sound with pipewire.
   sound.enable = true;
@@ -107,7 +107,7 @@
       extraGroups = [ "networkmanager" "wheel" ];
     };
   };
-
+  networking.networkmanager.enable = true;
   # This setups a SSH server. Very important if you're setting up a headless system.
   # Feel free to remove if you don't need it.
   services.openssh = {
@@ -119,6 +119,7 @@
       PasswordAuthentication = false;
     };
   };
+  security.polkit.enable = true;
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   system.stateVersion = "23.11"; # Did you read the comment?
