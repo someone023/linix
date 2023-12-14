@@ -1,13 +1,11 @@
 {config, ...}: {
   imports = [
     ./cli.nix
+    ./nushell.nix
   ];
 
   # add environment variables
   home.sessionVariables = {
-    # clean up ~
-    LESSHISTFILE = cache + "/less/history";
-    LESSKEY = c + "/less/lesskey";
 
     # enable scrolling in git diff
     DELTA_PAGER = "less -R";
