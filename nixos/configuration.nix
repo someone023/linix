@@ -24,6 +24,39 @@
     ./hardware-configuration.nix
   ];
 
+  hardware.opengl = {
+    enable = true;
+    extraPackages = with pkgs; [
+      intel-media-driver # LIBVA_DRIVER_NAME=iHD
+    ];
+  };
+
+  hardware = {
+    enableRedistributableFirmware = lib.mkDefault true;
+    };
+
+  services = {
+    thermald = {
+      enable = lib.mkDefault true;
+    };
+    fwupd =	{
+      enable = lib.mkDefault true;
+    };
+    auto-cpufreq = {
+      enable = true;
+      settings = {
+        battery = {
+          governor = "powersave";
+          turbo = "never";
+      };
+        charger = {
+          governor = "performance";
+          turbo = "auto";
+        };
+      };
+    };
+  };
+
   nixpkgs = {
     # You can add overlays here
     overlays = [
@@ -44,6 +77,7 @@
     ];
     # Configure your nixpkgs instance
     config = {
+      vaapiIntel = pkgs.vaapiIntel.override { enableHybridCodec = true; };
       # Disable if you don't want unfree packages
       allowUnfree = true;
     };
@@ -71,7 +105,11 @@
     auto-optimise-store = true;
   };
 
-    # Configure keymap in X11
+  networking.hostName = "linix";
+
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
+
   services.xserver = {
     layout = "de";
     xkbVariant = "us";
@@ -79,13 +117,6 @@
   console.keyMap = "us";
 
 
-  networking.hostName = "linix";
-
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-
-    # Enable CUPS to print documents.
-  # services.printing.enable = true;
 
   # Enable sound with pipewire.
   sound.enable = true;
@@ -101,12 +132,15 @@
   users.users = {
     wasd = {
       isNormalUser = true;
+      shell = pkgs.zsh;
       openssh.authorizedKeys.keys = [
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINhqO14oVhYp3iAYnKH1h43czDOxy6C/zU0FRvTQ2MP9 ali"
       ];
       extraGroups = [ "networkmanager" "wheel" ];
     };
   };
+
+  
   networking.networkmanager.enable = true;
   # This setups a SSH server. Very important if you're setting up a headless system.
   # Feel free to remove if you don't need it.
@@ -119,7 +153,25 @@
       PasswordAuthentication = false;
     };
   };
+
+  programs.zsh.enable = true;
   security.polkit.enable = true;
+
+
+  fonts.packages = with pkgs; [
+  noto-fonts
+  noto-fonts-cjk
+  noto-fonts-emoji
+  liberation_ttf
+  fira-code
+  fira-code-symbols
+  mplus-outline-fonts.githubRelease
+  dina-font
+  proggyfonts
+  jetbrains-mono
+  (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" "JetBrainsMono" ]; })
+];
+
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   system.stateVersion = "23.11"; # Did you read the comment?
