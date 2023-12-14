@@ -129,17 +129,18 @@
     pulse.enable = true;
   };
 
+  programs.fish.enable = true;
+  users.defaultUserShell = pkgs.fish;
+
   users.users = {
     wasd = {
       isNormalUser = true;
-      shell = pkgs.zsh;
       openssh.authorizedKeys.keys = [
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINhqO14oVhYp3iAYnKH1h43czDOxy6C/zU0FRvTQ2MP9 ali"
       ];
       extraGroups = [ "networkmanager" "wheel" ];
     };
   };
-
   
   networking.networkmanager.enable = true;
   # This setups a SSH server. Very important if you're setting up a headless system.
@@ -154,7 +155,6 @@
     };
   };
 
-  programs.zsh.enable = true;
   security.polkit.enable = true;
 
 

@@ -1,7 +1,7 @@
 {config, ...}: {
   imports = [
     ./cli.nix
-    ./nushell.nix
+    ./fish.nix
   ];
 
   # add environment variables
