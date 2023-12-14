@@ -1,3 +1,10 @@
+{
+  inputs,
+  config,
+  pkgs,
+  lib,
+  ...
+}: {
 programs = {
     nushell = { enable = true;
       # The config.nu can be anywhere you want if you like to edit your Nushell with Nu
@@ -32,6 +39,7 @@ programs = {
        shellAliases = {
        vi = "nvim";
        vim = "nvim";
+       nano = "nvim";
        };
    };  
    carapace.enable = true;
@@ -48,3 +56,4 @@ programs = {
   };
 };
 
+}
