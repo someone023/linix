@@ -5,7 +5,7 @@
       size = 15;
       name = "JetBrainsMono Nerd Font Mono";
     };
-    shellIntegration.enableZshIntegration;
+    shellIntegration.enableZshIntegration = true;
 
     settings = {
       scrollback_lines = 10000;

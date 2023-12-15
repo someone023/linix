@@ -10,6 +10,7 @@
   imports = [
     ./anyrun.nix
     ./hyprland
+    ./mako.nix
     #./hyprpaper.nix
     #./swayidle.nix
     #./swaylock.nix
