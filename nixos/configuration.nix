@@ -172,8 +172,20 @@
   (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" "JetBrainsMono" ]; })
 ];
 
+  nix.settings = {
+    trusted-users = ["wasd"];
 
-  # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
+    substituters = [
+      "https://hyprland.cachix.org"
+      "https://anyrun.cachix.org"
+    ];
+
+    trusted-public-keys = [
+      "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
+      "anyrun.cachix.org-1:pqBobmOjI7nKlsUMV25u9QHa9btJK65/C8vnO3p346s="
+    ];
+  };
+
   system.stateVersion = "23.11"; # Did you read the comment?
 
  }
