@@ -1,8 +1,7 @@
-{
-  pkgs,
-  config,
-  ...
-}:{
+{ pkgs
+, config
+, ...
+}: {
   home.packages = with pkgs; [
     # archives
     zip
@@ -15,6 +14,7 @@
     duf
     fd
     ripgrep
+    lazygit
 
     # file managers
     ranger
