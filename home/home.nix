@@ -1,12 +1,11 @@
 # This is your home-manager configuration file
 # Use this to configure your home environment (it replaces ~/.config/nixpkgs/home.nix)
-{
-  inputs,
-  outputs,
-  lib,
-  config,
-  pkgs,
-  ...
+{ inputs
+, outputs
+, lib
+, config
+, pkgs
+, ...
 }: {
   # You can import other home-manager modules here
   imports = [
@@ -35,6 +34,7 @@
 
       # Or define it inline, for example:
       # (final: prev: {
+
       #   hi = final.hello.overrideAttrs (oldAttrs: {
       #     patches = [ ./change-hello-to-hi.patch ];
       #   });
@@ -56,38 +56,83 @@
 
   # Add stuff for your user as you see fit:
   programs.neovim.enable = true;
-  home.packages = with pkgs; [ 
+  home.packages = with pkgs; [
     wget
-    ffmpeg 
-    curl 
-    kitty 
-    firefox 
-    pavucontrol 
-    ];
+    curl
+
+    xfce.thunar
+    xfce.thunar-archive-plugin
+    kitty
+    firefox
+    pavucontrol
+
+
+    # misc
+    mako
+    libnotify
+    xdg-utils
+    colord
+    ffmpegthumbnailer
+    imagemagick
+    xdotool
+    cliphist
+    rizin
+    xcolor
+    htop
+    nodejs
+    dconf
+    ffmpeg
+    nixpkgs-fmt
+  ];
+
 
   # Enable home-manager and git
   programs.home-manager.enable = true;
   programs.git.enable = true;
 
   programs.zsh = {
-  enable = true;
-  shellAliases = {
-    ll = "ls -l";
-  };
-};
-
-
-  wayland.windowManager.sway = {
     enable = true;
-    config = rec {
-      modifier = "Mod4";
-      # Use kitty as default terminal
-      terminal = "kitty"; 
-      startup = [
-        # Launch Firefox on start
-        {command = "firefox";}
-      ];
+    shellAliases = {
+      ll = "ls -l";
     };
+  };
+
+  home.pointerCursor = {
+    gtk.enable = true;
+    # x11.enable = true;
+    package = pkgs.bibata-cursors;
+    name = "Bibata-Modern-Classic";
+    size = 24;
+  };
+
+  dconf = {
+    enable = true;
+    settings = {
+      "org/gnome/desktop/interface" = {
+        color-scheme = "prefer-dark";
+      };
+    };
+  };
+
+  gtk = {
+    enable = true;
+    theme = {
+      name = "Juno";
+      package = pkgs.juno-theme;
+    };
+    iconTheme = {
+      name = "Papirus-Dark";
+      package = pkgs.papirus-icon-theme;
+    };
+    font = {
+      name = "JetBrainsMono";
+      size = 11;
+    };
+  };
+
+  programs.vscode = {
+    enable = true;
+    # extensions = with pkgs.vscode-extensions; [];
   };
 
 

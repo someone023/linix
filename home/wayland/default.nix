@@ -27,7 +27,6 @@
 
 
     #themes
-    juno-theme
     bibata-cursors
   ];
 
