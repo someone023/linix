@@ -5,9 +5,9 @@
   ...
 }: {
   imports = [
-    ./binds.nix
-    ./rules.nix
-    ./settings.nix
+    #./binds.nix
+    #./rules.nix
+    #./config.nix
   ];
 
   home.packages = [
@@ -21,4 +21,6 @@
   wayland.windowManager.hyprland = {
     enable = true;
   };
+  wayland.windowManager.hyprland.extraConfig = builtins.readFile ./hypr.conf;
+
 }

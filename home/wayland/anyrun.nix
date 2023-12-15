@@ -1,19 +1,16 @@
-{ pkgs, anyrun, ... }:
-
 {
-  imports = [
-    anyrun.homeManagerModules.default
-  ];
-
+  pkgs,
+  inputs,
+  ...
+}: {
   programs.anyrun = {
     enable = true;
+
     config = {
-      plugins = with anyrun.packages.${pkgs.system}; [
+      plugins = with inputs.anyrun.packages.${pkgs.system}; [
         applications
-        randr
         rink
         shell
-        symbols
         translate
       ];
 
@@ -23,65 +20,61 @@
       closeOnClick = true;
     };
 
-    # custom css for anyrun, based on catppuccin-mocha
     extraCss = ''
-      @define-color bg-col  rgba(30, 30, 46, 0.7);
-      @define-color bg-col-light rgba(150, 220, 235, 0.7);
-      @define-color border-col rgba(30, 30, 46, 0.7);
-      @define-color selected-col rgba(150, 205, 251, 0.7);
-      @define-color fg-col #D9E0EE;
-      @define-color fg-col2 #F28FAD;
-
       * {
         transition: 200ms ease;
-        font-family: "JetBrainsMono Nerd Font";
+        font-family: Lexend;
         font-size: 1.3rem;
       }
 
-      #window {
-        background: transparent;
-      }
-
+      #window,
+      #match,
+      #entry,
       #plugin,
-      #main {
-        border: 3px solid @border-col;
-        color: @fg-col;
-        background-color: @bg-col;
+      #main { background: transparent; }
+
+      #match.activatable {
+        border-radius: 16px;
+        padding: .3rem .9rem;
+        margin-top: .01rem;
       }
-      /* anyrun's input window - Text */
+      #match.activatable:first-child { margin-top: .7rem; }
+      #match.activatable:last-child { margin-bottom: .6rem; }
+
+      #plugin:hover #match.activatable {
+        border-radius: 10px;
+        padding: .3rem;
+        margin-top: .01rem;
+        margin-bottom: 0;
+      }
+
+      #match:selected, #match:hover, #plugin:hover {
+        background: rgba(255, 255, 255, .1);
+      }
+
       #entry {
-        color: @fg-col;
-        background-color: @bg-col;
-      }
-
-      /* anyrun's ouput matches entries - Base */
-      #match {
-        color: @fg-col;
-        background: @bg-col;
-      }
-
-      /* anyrun's selected entry - Red */
-      #match:selected {
-        color: @fg-col2;
-        background: @selected-col;
-      }
-
-      #match {
-        padding: 3px;
+        background: rgba(255,255,255,.05);
+        border: 1px solid rgba(255,255,255,.1);
         border-radius: 16px;
+        margin: .3rem;
+        padding: .3rem 1rem;
       }
 
-      #entry, #plugin:hover {
+      list > #plugin {
         border-radius: 16px;
+        margin: 0 .3rem;
       }
+      list > #plugin:first-child { margin-top: .3rem; }
+      list > #plugin:last-child { margin-bottom: .3rem; }
+      list > #plugin:hover { padding: .6rem; }
 
       box#main {
-        background: rgba(30, 30, 46, 0.7);
-        border: 1px solid @border-col;
-        border-radius: 15px;
-        padding: 5px;
+        background: rgba(31, 31, 40, .5);
+        box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .1), 0 0 0 1px rgba(0, 0, 0, .5);
+        border-radius: 24px;
+        padding: .3rem;
       }
     '';
-  };
 
+  };
 }

@@ -9,13 +9,11 @@
 # Wayland config
 {
   imports = [
-    ../programs/ags
-    ../programs/eww
-    ./anyrun
+    ./anyrun.nix
     ./hyprland
-    ./hyprpaper.nix
-    ./swayidle.nix
-    ./swaylock.nix
+    #./hyprpaper.nix
+    #./swayidle.nix
+    #./swaylock.nix
   ];
 
   home.packages = with pkgs; [
@@ -24,6 +22,13 @@
     wl-screenrec
     wlogout
     wlr-randr
+    polkit-kde-agent
+    xdg-desktop-portal-hyprland
+
+
+    #themes
+    juno-theme
+    bibata-cursors
   ];
 
   # make stuff work on wayland
