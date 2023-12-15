@@ -1,10 +1,9 @@
-{
-  pkgs,
-  lib,
-  self,
-  inputs,
-  config,
-  ...
+{ pkgs
+, lib
+, self
+, inputs
+, config
+, ...
 }:
 # Wayland config
 {
@@ -22,8 +21,9 @@
     wl-screenrec
     wlogout
     wlr-randr
-    polkit-kde-agent
     xdg-desktop-portal-hyprland
+
+    cliphist
 
 
     #themes
@@ -42,7 +42,7 @@
   systemd.user.targets.tray = {
     Unit = {
       Description = "Home Manager System Tray";
-      Requires = ["graphical-session-pre.target"];
+      Requires = [ "graphical-session-pre.target" ];
     };
   };
 }

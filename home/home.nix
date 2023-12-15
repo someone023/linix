@@ -97,33 +97,27 @@
     };
   };
 
+
   home.pointerCursor = {
     gtk.enable = true;
     # x11.enable = true;
     package = pkgs.bibata-cursors;
     name = "Bibata-Modern-Classic";
-    size = 24;
-  };
-
-  dconf = {
-    enable = true;
-    settings = {
-      "org/gnome/desktop/interface" = {
-        color-scheme = "prefer-dark";
-      };
-    };
+    size = 16;
   };
 
   gtk = {
     enable = true;
     theme = {
-      name = "Juno";
       package = pkgs.juno-theme;
+      name = "Juno-mirage";
     };
+
     iconTheme = {
-      name = "Papirus-Dark";
       package = pkgs.papirus-icon-theme;
+      name = "Papirus-Dark";
     };
+
     font = {
       name = "JetBrainsMono";
       size = 11;
