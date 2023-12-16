@@ -13,6 +13,7 @@
     ./wayland
     ./programs
     ./development
+    ./editors/neovim.nix
     # If you want to use modules your own flake exports (from modules/home-manager):
     # outputs.homeManagerModules.example
 
@@ -57,7 +58,6 @@
   };
 
   # Add stuff for your user as you see fit:
-  programs.neovim.enable = true;
   home.packages = with pkgs; [
     wget
     curl

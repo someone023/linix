@@ -7,6 +7,7 @@
 
 
     #-- c/c++
+
     cmake
     cmake-language-server
     gnumake
@@ -30,6 +31,9 @@
 
     # misc
     tree-sitter
+    fzf
+    telescope
+
     glow # markdown previewer
   ] ++ (if pkgs.stdenv.isLinux then [
     # Automatically trims your branches whose tracking remote refs are merged or gone

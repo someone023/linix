@@ -1,11 +1,17 @@
-{ pkgs, lib, ... }: {
+{ pkgs, ... }: {
   programs.neovim = {
     enable = true;
 
     vimAlias = true;
     viAlias = true;
     vimdiffAlias = true;
-    programs.neovim.extraConfig = lib.fileContents ~/.config/nvim/init.vim;
+
+    plugins = with pkgs.vimPlugins; [
+      (nvim-treesitter.withPlugins (_: pkgs.tree-sitter.allGrammars))
+      LazyVim
+    ];
+
+    extraPackages = with pkgs; [ gcc ripgrep fd ];
 
   };
 }
