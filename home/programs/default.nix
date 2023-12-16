@@ -21,6 +21,7 @@ in
     ./media.nix
     ./xdg.nix
     ./system-tools.nix
+    ./git.nix
   ];
 
   programs = {
