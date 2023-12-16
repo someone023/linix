@@ -30,8 +30,8 @@ in
       ];
 
       general = {
-        gaps_in = 2;
-        gaps_out = 2;
+        gaps_in = 4;
+        gaps_out = 4;
         border_size = 1;
         "col.active_border" = "0xffb4befe 0xff89dceb 45deg";
         "col.inactive_border" = "0xff313244 0xff45475a 45deg";
@@ -56,7 +56,7 @@ in
         drop_shadow = true;
         shadow_ignore_window = true;
         shadow_offset = "0 2";
-        shadow_range = 10;
+        shadow_range = 8;
         shadow_render_power = 3;
         "col.shadow" = "0xffb4befe";
         "col.shadow_inactive" = "0x50000000";

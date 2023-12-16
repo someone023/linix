@@ -20,6 +20,11 @@
     # everything match nicely? Try nix-colors!
     nix-colors.url = "github:misterio77/nix-colors";
 
+    hyprland = {
+      url = "github:hyprwm/Hyprland";
+      # build with your own instance of nixpkgs
+    };
+
     anyrun = {
       url = "github:Kirottu/anyrun";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -31,6 +36,7 @@
     { self
     , nixpkgs
     , home-manager
+    , hyprland
     , ...
     } @ inputs:
     let
@@ -79,6 +85,9 @@
           pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
           extraSpecialArgs = { inherit inputs outputs; };
           modules = [
+            hyprland.homeManagerModules.default
+            { wayland.windowManager.hyprland.enable = true; }
+
             # > Our main home-manager configuration file <
             ./home/home.nix
           ];

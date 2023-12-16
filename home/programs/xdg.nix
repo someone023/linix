@@ -19,13 +19,11 @@ let
     "x-scheme-handler/unknown" = browser;
 
     "audio/*" = [ "celluloid" ];
-    "video/*" = [ "celluloid" ];
+    "video/*" = [ "mpv" ];
     "image/*" = [ "loupe" ];
     "application/json" = browser;
     "application/pdf" = browser;
     "x-scheme-handler/discord" = browser;
-    "x-scheme-handler/spotify" = [ "spotify" ];
-    "x-scheme-handler/tg" = [ "telegramdesktop" ];
   };
 in
 {
