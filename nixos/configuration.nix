@@ -139,14 +139,21 @@
   programs = {
     less.enable = true;
 
-    git.enable = true;
+    git =
+      {
+        enable = true;
+        config = {
+          user.name = "Ali Erkol";
+          user.email = "a.erkol@tu-braunschweig.com";
+        };
+      };
 
     zsh = {
       enable = true;
       autosuggestions.enable = true;
       syntaxHighlighting = {
         enable = true;
-        patterns = { "rm -rf *" = "fg=black,bg=red"; };
+        patterns = { " rm - rf * " = " fg=black,bg=red"; };
         styles = { "alias" = "fg=magenta"; };
         highlighters = [ "main" "brackets" "pattern" ];
       };
@@ -197,3 +204,4 @@
   system.stateVersion = "23.11"; # Did you read the comment?
 
 }
+
