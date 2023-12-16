@@ -46,21 +46,17 @@
     fwupd = {
       enable = lib.mkDefault true;
     };
-    tlp = {
+
+    power-profiles-daemon.enable = true;
+
+    # profile-sync-daemon
+    psd = {
       enable = true;
-      settings = {
-        CPU_SCALING_GOVERNOR_ON_AC = "performance";
-        CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
-
-        CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
-        CPU_ENERGY_PERF_POLICY_ON_AC = "performance";
-
-        CPU_MIN_PERF_ON_AC = 0;
-        CPU_MAX_PERF_ON_AC = 100;
-        CPU_MIN_PERF_ON_BAT = 0;
-        CPU_MAX_PERF_ON_BAT = 20;
-      };
+      resyncTimer = "10m";
     };
+
+    # battery info & stuff
+    upower.enable = true;
 
   };
 
@@ -146,7 +142,7 @@
       openssh.authorizedKeys.keys = [
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINhqO14oVhYp3iAYnKH1h43czDOxy6C/zU0FRvTQ2MP9 ali"
       ];
-      extraGroups = [ "networkmanager" "wheel" ];
+      extraGroups = [ "input" "libvirtd" "networkmanager" "plugdev" "transmission" "video" "wheel" ];
     };
   };
 

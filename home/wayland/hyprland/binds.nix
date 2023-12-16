@@ -36,6 +36,7 @@ in
       [
         # compositor commands
         "$mod SHIFT, E, exec, pkill Hyprland"
+        "$mod SHIFT, E, exec, pkill Hyprland"
         "$mod, Q, killactive,"
         "$mod, F, fullscreen,"
         "$mod, G, togglegroup,"
@@ -46,18 +47,16 @@ in
         "$mod, P, pseudo,"
         "$mod ALT, ,resizeactive,"
 
-        # toggle "monocle" (no_gaps_when_only)
-        "$mod, M, exec, hyprctl keyword ${monocle} $(($(hyprctl getoption ${monocle} -j | jaq -r '.int') ^ 1))"
 
         # utility
         # terminal
-        "$mod, Return, exec, run-as-service kitty"
+        "$mod, Return, exec, kitty"
+
+        "$mod, D, exec, anyrun"
         # logout menu
         "$mod, Escape, exec, wlogout -p layer-shell"
         # lock screen
         "$mod, L, exec, loginctl lock-session"
-        # select area to perform OCR on
-        "$mod, O, exec, run-as-service wl-ocr"
 
         # move focus
         "$mod, left, movefocus, l"
@@ -72,13 +71,27 @@ in
         # cycle monitors
         "$mod SHIFT, bracketleft, focusmonitor, l"
         "$mod SHIFT, bracketright, focusmonitor, r"
+
+        "$mod, M, exit"
+
+        # move window
+        "SUPER SHIFT, 1, movetoworkspace, 1"
+        "SUPER SHIFT, 2, movetoworkspace, 2"
+        "SUPER SHIFT, 3, movetoworkspace, 3"
+        "SUPER SHIFT, 4, movetoworkspace, 4"
+        "SUPER SHIFT, 5, movetoworkspace, 5"
+
+        # Move Active
+        "SUPER_SHIFT, left,  movewindow, l"
+        "SUPER_SHIFT, right, movewindow, r"
+        "SUPER_SHIFT, up,    movewindow, u"
+        "SUPER_SHIFT, down,  movewindow, d"
+
+
+        "SUPER, mouse:276, fullscreen, 0 "
+        "SUPER, mouse:276, exec, $notifycmd 'Fullscreen Mode'"
       ]
       ++ workspaces;
-
-    bindr = [
-      # launcher
-      "$mod, SUPER_L, exec, pkill .anyrun-wrapped || run-as-service anyrun"
-    ];
 
     bindl = [
       # media controls
