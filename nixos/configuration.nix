@@ -120,6 +120,9 @@
   };
   console.keyMap = "us";
 
+  documentation.dev.enable = true;
+  environment.pathsToLink = [ "/share/zsh" ];
+
 
 
   # Enable sound with pipewire.
@@ -133,12 +136,26 @@
     pulse.enable = true;
   };
 
-  programs.fish.enable = true;
-  users.defaultUserShell = pkgs.fish;
+  programs = {
+    less.enable = true;
+
+    zsh = {
+      enable = true;
+      autosuggestions.enable = true;
+      syntaxHighlighting = {
+        enable = true;
+        patterns = { "rm -rf *" = "fg=black,bg=red"; };
+        styles = { "alias" = "fg=magenta"; };
+        highlighters = [ "main" "brackets" "pattern" ];
+      };
+    };
+  };
+
 
   users.users = {
     wasd = {
       isNormalUser = true;
+      shell = pkgs.zsh;
       openssh.authorizedKeys.keys = [
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINhqO14oVhYp3iAYnKH1h43czDOxy6C/zU0FRvTQ2MP9 ali"
       ];

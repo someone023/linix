@@ -20,6 +20,7 @@
 
     # file managers
     ranger
+
   ];
 
   programs = {
