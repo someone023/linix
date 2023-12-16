@@ -21,7 +21,7 @@
       border-color=#a4b9ef
       border-radius=15
       progress-color=over #332E41
-      default-timeout=10000
+      default-timeout=2000
       group-by=summary
       format=<span font="JetBrainsMono Nerd Font weight=325 Italic" size="12288">%s</span>\n<span font="OperatorMonoSSm Nerd Font weight=325" size="12288">%b</span>
 
