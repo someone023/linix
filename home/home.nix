@@ -73,10 +73,8 @@
     ffmpegthumbnailer
     imagemagick
     xdotool
-    cliphist
     rizin
     xcolor
-    dconf
     ffmpeg
     nixpkgs-fmt
   ];

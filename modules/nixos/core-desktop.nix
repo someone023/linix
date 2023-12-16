@@ -10,6 +10,8 @@
   # to install chrome, you need to enable unfree packages
   nixpkgs.config.allowUnfree = lib.mkForce true;
 
+  environment.variables.NIXOS_OZONE_WL = "1";
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
@@ -21,11 +23,6 @@
     wget
     curl
   ];
-
-  programs = {
-    ssh.startAgent = true;
-    dconf.enable = true;
-  };
 
   # https://github.com/rvaiya/keyd
   services.keyd = {
@@ -43,10 +40,28 @@
   };
 
   security.polkit.enable = true;
-  services.gnome.gnome-keyring.enable = true;
   security.pam.services.greetd.enableGnomeKeyring = true;
 
   services = {
+
+    clight = {
+      enable = true;
+      settings = {
+        verbose = true;
+        backlight.disabled = true;
+        dpms.timeouts = [ 900 300 ];
+        dimmer.timeouts = [ 870 270 ];
+        gamma.long_transition = true;
+        screen.disabled = true;
+      };
+    };
+
+    gvfs.enable = true;
+
+
+    gnome.gnome-keyring.enable = true;
+
+
 
     dbus.packages = [ pkgs.gcr ];
     geoclue2.enable = true;
@@ -54,6 +69,20 @@
     udev.packages = with pkgs; [
       gnome.gnome-settings-daemon
     ];
+  };
+
+  location.provider = "geoclue2";
+
+  programs = {
+
+    ssh.startAgent = true;
+
+    # make HM-managed GTK stuff work
+    dconf.enable = true;
+
+    kdeconnect.enable = true;
+
+    seahorse.enable = true;
   };
 
   systemd = {
@@ -72,7 +101,11 @@
     };
   };
 
-
+  qt = {
+    enable = true;
+    platformTheme = "gtk2";
+    style = "gtk2";
+  };
 
   xdg.portal = {
     enable = true;
@@ -96,9 +129,39 @@
     # xdg-open is used by almost all programs to open a unknown file/uri
     # alacritty as an example, it use xdg-open as default, but you can also custom this behavior
     # and vscode has open like `External Uri Openers`
-    xdgOpenUsePortal = false;
+    xdgOpenUsePortal = true;
     extraPortals = with pkgs; [
       xdg-desktop-portal-gtk # for gtk
     ];
+  };
+
+  fonts = {
+    packages = with pkgs; [
+      # icon fonts
+      material-symbols
+
+      # normal fonts
+      noto-fonts
+      noto-fonts-cjk
+      noto-fonts-emoji
+      roboto
+      (google-fonts.override { fonts = [ "Inter" ]; })
+
+      # nerdfonts
+      (nerdfonts.override { fonts = [ "FiraCode" "JetBrainsMono" ]; })
+    ];
+
+    # causes more issues than it solves
+    enableDefaultPackages = false;
+
+    # user defined fonts
+    # the reason there's Noto Color Emoji everywhere is to override DejaVu's
+    # B&W emojis that would sometimes show instead of some Color emojis
+    fontconfig.defaultFonts = {
+      serif = [ "Noto Serif" "Noto Color Emoji" ];
+      sansSerif = [ "Inter" "Noto Color Emoji" ];
+      monospace = [ "JetBrainsMono Nerd Font" "Noto Color Emoji" ];
+      emoji = [ "Noto Color Emoji" ];
+    };
   };
 }

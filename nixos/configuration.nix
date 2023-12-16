@@ -35,6 +35,8 @@
 
   hardware = {
     enableRedistributableFirmware = lib.mkDefault true;
+    brillo.enable = true;
+
   };
 
   services = {
@@ -111,8 +113,6 @@
     auto-optimise-store = true;
   };
 
-  environment.sessionVariables.NIXOS_OZONE_WL = "1";
-
   networking.hostName = "linix";
 
   boot.loader.systemd-boot.enable = true;
@@ -162,20 +162,6 @@
       PasswordAuthentication = false;
     };
   };
-
-  fonts.packages = with pkgs; [
-    noto-fonts
-    noto-fonts-cjk
-    noto-fonts-emoji
-    liberation_ttf
-    fira-code
-    fira-code-symbols
-    mplus-outline-fonts.githubRelease
-    dina-font
-    proggyfonts
-    jetbrains-mono
-    (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" "JetBrainsMono" ]; })
-  ];
 
   nix.settings = {
     trusted-users = [ "wasd" ];
