@@ -66,13 +66,11 @@
     xfce.thunar-archive-plugin
     kitty
     firefox
-    pavucontrol
 
 
     # misc
     mako
     libnotify
-    xdg-utils
     colord
     ffmpegthumbnailer
     imagemagick

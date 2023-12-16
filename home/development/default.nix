@@ -21,9 +21,6 @@
     cargo # rust package manager
     rustfmt
 
-
-    go
-
     stylua
     lua-language-server
 

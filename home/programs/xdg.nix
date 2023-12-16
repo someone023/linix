@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, pkgs, ... }:
 let
   browser = [ "firefox" ];
 
@@ -29,21 +29,29 @@ let
   };
 in
 {
-  xdg = {
-    enable = true;
-    cacheHome = config.home.homeDirectory + "/.local/cache";
 
-    mimeApps = {
-      enable = true;
-      defaultApplications = associations;
-    };
+  home.packages = with pkgs; [
+    xdg-utils # provides cli tools such as `xdg-mime` `xdg-open`
+    xdg-user-dirs
+  ];
 
-    userDirs = {
+  xdg =
+    {
       enable = true;
-      createDirectories = true;
-      extraConfig = {
-        XDG_SCREENSHOTS_DIR = "${config.xdg.userDirs.pictures}/Screenshots";
+      cacheHome = config.home.homeDirectory + "/.local/cache";
+
+      mimeApps = {
+        enable = true;
+        defaultApplications = associations;
+      };
+
+
+      userDirs = {
+        enable = true;
+        createDirectories = true;
+        extraConfig = {
+          XDG_SCREENSHOTS_DIR = "${config.xdg.userDirs.pictures}/Screenshots";
+        };
       };
     };
-  };
 }

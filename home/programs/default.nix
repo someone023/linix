@@ -2,6 +2,8 @@
 , pkgs
 , ...
 }:
+
+
 let
   colorschemePath = "/org/gnome/desktop/interface/color-scheme";
   dconf = "${pkgs.dconf}/bin/dconf";
@@ -16,6 +18,8 @@ in
 {
   imports = [
     ./kitty.nix
+    ./media.nix
+    ./xdg.nix
   ];
 
   programs = {
@@ -26,7 +30,6 @@ in
         { id = "bkkmolkhemgaeaeggcmfbghljjjoofoh"; }
       ];
     };
-
   };
 
   #services.syncthing.enable = true;
