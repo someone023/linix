@@ -27,7 +27,6 @@
         pager = "less -FR";
       };
     };
-    btop.enable = true;
     eza.enable = true;
     ssh.enable = true;
 

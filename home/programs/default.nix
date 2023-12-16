@@ -20,6 +20,7 @@ in
     ./kitty.nix
     ./media.nix
     ./xdg.nix
+    ./system-tools.nix
   ];
 
   programs = {
@@ -32,5 +33,4 @@ in
     };
   };
 
-  #services.syncthing.enable = true;
 }

@@ -59,8 +59,7 @@
 
   # Add stuff for your user as you see fit:
   home.packages = with pkgs; [
-    wget
-    curl
+
 
     xfce.thunar
     xfce.thunar-archive-plugin
@@ -70,7 +69,6 @@
 
     # misc
     mako
-    libnotify
     colord
     ffmpegthumbnailer
     imagemagick
@@ -78,8 +76,6 @@
     cliphist
     rizin
     xcolor
-    htop
-    nodejs
     dconf
     ffmpeg
     nixpkgs-fmt

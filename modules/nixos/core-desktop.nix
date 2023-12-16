@@ -4,12 +4,6 @@
 , pkgs-unstable
 , ...
 }: {
-  ###################################################################################
-  #
-  #  NixOS's core configuration suitable for my desktop computer
-  #
-  ###################################################################################
-
   imports = [
   ];
 
@@ -21,16 +15,18 @@
   environment.systemPackages = with pkgs; [
 
     psmisc # killall/pstree/prtstat/fuser/...
+    lm_sensors
+    ethtool
+    btop
+    wget
+    curl
   ];
 
   programs = {
-    # Use `ssh-add` to add a key to the agent.
     ssh.startAgent = true;
-    # dconf is a low-level configuration system.
     dconf.enable = true;
   };
 
-  # A key remapping daemon for linux.
   # https://github.com/rvaiya/keyd
   services.keyd = {
     enable = true;
@@ -47,7 +43,6 @@
   };
 
   security.polkit.enable = true;
-  # security with gnome-kering
   services.gnome.gnome-keyring.enable = true;
   security.pam.services.greetd.enableGnomeKeyring = true;
 
@@ -104,10 +99,6 @@
     xdgOpenUsePortal = false;
     extraPortals = with pkgs; [
       xdg-desktop-portal-gtk # for gtk
-      # xdg-desktop-portal-kde  # for kde
     ];
   };
-
-
-
 }

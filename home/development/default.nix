@@ -24,6 +24,9 @@
     stylua
     lua-language-server
 
+    nodejs
+
+
     # db related
 
     # misc
