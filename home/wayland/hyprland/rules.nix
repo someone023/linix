@@ -7,7 +7,7 @@ in
     # layer rules
     layerrule =
       let
-        layers = "^(eww-.+|bar|system-menu|anyrun|gtk-layer-shell|osd[0-9])$";
+        layers = "^(eww-.+|bar|system-menu|anyrun|kitty|gtk-layer-shell|osd[0-9])$";
       in
       [
         "blur, ${layers}"
@@ -18,7 +18,6 @@ in
 
     # window rules
     windowrulev2 = [
-      # telegram media viewer
       "float, title:^(Media viewer)$"
 
 
@@ -39,6 +38,14 @@ in
       "rounding 0, xwayland:1"
       "center, class:^(.*jetbrains.*)$, title:^(Confirm Exit|Open Project|win424|win201|splash)$"
       "size 640 400, class:^(.*jetbrains.*)$, title:^(splash)$"
+
+    ];
+    workspace = [
+      "1, monitor:eDP-1, default:true"
+      "2, monitor:eDP-1, default:true"
+      "3, monitor:eDP-1, default:true"
+      "4, monitor:HDMI-A-1, default:true"
+      "5, monitor:HDMI-A-1, default:true"
     ];
   };
 }
