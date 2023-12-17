@@ -7,7 +7,6 @@
 
 
     #-- c/c++
-
     cmake
     cmake-language-server
     gnumake
@@ -33,6 +32,15 @@
     tree-sitter
     fzf
     telescope
+
+    #-- nix
+    nil
+    rnix-lsp
+    # nixd
+    statix # Lints and suggestions for the nix programming language
+    deadnix # Find and remove unused code in .nix source files
+    alejandra # Nix Code Formatter
+
 
     glow # markdown previewer
   ] ++ (if pkgs.stdenv.isLinux then [

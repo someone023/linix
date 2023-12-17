@@ -11,7 +11,7 @@
       LazyVim
     ];
 
-    extraPackages = with pkgs; [ gcc ripgrep fd ];
+    extraPackages = with pkgs; [ lazygit ];
 
   };
 }
