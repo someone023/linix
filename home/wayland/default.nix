@@ -19,7 +19,6 @@
   home.packages = with pkgs; [
     # utils
     wl-clipboard
-    wl-screenrec
     wlogout
     wlr-randr
     xdg-desktop-portal-hyprland
@@ -36,7 +35,10 @@
     QT_QPA_PLATFORM = "wayland";
     SDL_VIDEODRIVER = "wayland";
     XDG_SESSION_TYPE = "wayland";
-
+    XDG_CURRENT_DESKTOP = "Hyprland";
+    XDG_SESSION_DESKTOP = "Hyprland";
+    GDK_BACKEND = "wayland";
+    MOZ_ENABLE_WAYLAND = "1";
   };
 
   # fake a tray to let apps start

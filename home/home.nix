@@ -80,10 +80,8 @@
 
   programs = {
     home-manager.enable = true;
-
-    vscode.enable = true;
-
   };
+
 
   home.pointerCursor = {
     gtk.enable = true;
