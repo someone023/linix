@@ -31,7 +31,6 @@ in
     # binds
     bind =
       let
-        monocle = "dwindle:no_gaps_when_only";
       in
       [
         # compositor commands

@@ -24,19 +24,23 @@
     ./hardware-configuration.nix
   ];
 
-  boot.kernelPackages = pkgs.linuxPackages_latest;
-
-  hardware.opengl = {
-    enable = true;
-    extraPackages = with pkgs; [
-      intel-media-driver # LIBVA_DRIVER_NAME=iHD
-    ];
+  boot = {
+    kernelPackages = pkgs.linuxPackages_latest;
+    loader.systemd-boot.enable = true;
+    loader.efi.canTouchEfiVariables = true;
   };
 
   hardware = {
+    opengl = {
+      enable = true;
+      extraPackages = with pkgs; [
+        intel-ocl
+        intel-media-driver # LIBVA_DRIVER_NAME=iHD
+      ];
+    };
+
     enableRedistributableFirmware = lib.mkDefault true;
     brillo.enable = true;
-
   };
 
   services = {
@@ -80,20 +84,31 @@
     ];
     # Configure your nixpkgs instance
     config = {
-      vaapiIntel = pkgs.vaapiIntel.override { enableHybridCodec = true; };
       # Disable if you don't want unfree packages
-      allowUnfree = true;
+      nixpkgs.config.allowUnfree = lib.mkForce true;
     };
   };
 
+  nixpkgs.config.allowUnfree = true;
 
-  # This will add each flake input as a registry
-  # To make nix3 commands consistent with your flake
-  nix.registry = (lib.mapAttrs (_: flake: { inherit flake; })) ((lib.filterAttrs (_: lib.isType "flake")) inputs);
+  nix = {
+    # Register each flake input
+    registry = (lib.mapAttrs (_: flake: { inherit flake; })) ((lib.filterAttrs (_: lib.isType "flake")) inputs);
 
-  # This will additionally add your inputs to the system's legacy channels
-  # Making legacy nix commands consistent as well, awesome!
-  nix.nixPath = [ "/etc/nix/path" ];
+    # Specify a custom Nix path
+    nixPath = [ "/etc/nix/path" ];
+
+    # Set Nix daemon settings
+    settings = {
+      # Enable flakes and new 'nix' command
+      experimental-features = "nix-command flakes";
+      # Deduplicate and optimize nix store
+      auto-optimise-store = true;
+    };
+  };
+
+  #This will add each flake input as a registry
+  #To make nix3 commands consistent with your flake
   environment.etc =
     lib.mapAttrs'
       (name: value: {
@@ -102,39 +117,12 @@
       })
       config.nix.registry;
 
-  nix.settings = {
-    # Enable flakes and new 'nix' command
-    experimental-features = "nix-command flakes";
-    # Deduplicate and optimize nix store
-    auto-optimise-store = true;
-  };
-
   networking.hostName = "linix";
 
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-
-  services.xserver = {
-    layout = "de";
-    xkbVariant = "us";
-  };
   console.keyMap = "us";
 
   documentation.dev.enable = true;
   environment.pathsToLink = [ "/share/zsh" ];
-
-
-
-  # Enable sound with pipewire.
-  sound.enable = true;
-  hardware.pulseaudio.enable = false;
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-  };
 
   programs = {
     less.enable = true;
@@ -159,6 +147,18 @@
       };
     };
   };
+
+  # List packages installed in system profile. To search, run:
+  # $ nix search wget
+  environment.systemPackages = with pkgs; [
+
+    psmisc # killall/pstree/prtstat/fuser/...
+    lm_sensors
+    ethtool
+    btop
+    wget
+    curl
+  ];
 
 
   users.users = {

@@ -1,7 +1,4 @@
 { config, ... }:
-let
-  inherit (config.programs.matugen) variant;
-in
 {
   wayland.windowManager.hyprland.settings = {
     # layer rules

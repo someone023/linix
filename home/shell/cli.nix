@@ -18,6 +18,8 @@
     jaq
     ripgrep
 
+    fastfetch
+
     # file managers
     ranger
 

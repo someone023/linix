@@ -7,22 +7,20 @@
   imports = [
   ];
 
-  # to install chrome, you need to enable unfree packages
-  nixpkgs.config.allowUnfree = lib.mkForce true;
-
   environment.variables.NIXOS_OZONE_WL = "1";
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = with pkgs; [
+  # Enable sound with pipewire.
+  sound.enable = true;
+  hardware.pulseaudio.enable = false;
+  security.rtkit.enable = true;
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+  };
 
-    psmisc # killall/pstree/prtstat/fuser/...
-    lm_sensors
-    ethtool
-    btop
-    wget
-    curl
-  ];
+
 
   # https://github.com/rvaiya/keyd
   services.keyd = {
@@ -43,6 +41,11 @@
   security.pam.services.greetd.enableGnomeKeyring = true;
 
   services = {
+    xserver =
+      {
+        layout = "de";
+        xkbVariant = "us";
+      };
 
     clight = {
       enable = true;

@@ -63,7 +63,6 @@
 
     xfce.thunar
     xfce.thunar-archive-plugin
-    kitty
     firefox
 
 
@@ -79,17 +78,12 @@
     nixpkgs-fmt
   ];
 
+  programs = {
+    home-manager.enable = true;
 
-  # Enable home-manager and git
-  programs.home-manager.enable = true;
+    vscode.enable = true;
 
-  programs.zsh = {
-    enable = true;
-    shellAliases = {
-      ll = "ls -l";
-    };
   };
-
 
   home.pointerCursor = {
     gtk.enable = true;
@@ -116,12 +110,6 @@
       size = 11;
     };
   };
-
-  programs.vscode = {
-    enable = true;
-    # extensions = with pkgs.vscode-extensions; [];
-  };
-
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
