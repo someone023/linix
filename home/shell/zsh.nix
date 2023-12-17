@@ -7,18 +7,11 @@
   programs.zsh = {
     enable = true;
     enableAutosuggestions = true;
-    plugins = [
-      {
-        # will source zsh-autosuggestions.plugin.zsh
-        name = "zsh-autocomplete";
-        src = pkgs.fetchFromGitHub {
-          owner = "marlonrichert";
-          repo = "zsh-autocomplete";
-          rev = "6d059a3634c4880e8c9bb30ae565465601fb5bd2";
-          sha256 = "0axhdjvhaw6qw0cdsjai98hhim31baiwgpb10da5ma7zix6b9mfh";
-        };
-      }
-    ];
+    oh-my-zsh = {
+      enable = true;
+      plugins = [ "git" "sudo" "aliases" ];
+    };
+
     autocd = true;
     dirHashes = {
       dl = "$HOME/Downloads";
@@ -34,8 +27,6 @@
     };
 
     initExtra = ''
-      # fix autocomplete
-      bindkey "''${key[Up]}" up-line-or-search
       
       # search history based on what's typed in the prompt
       autoload -U history-search-end
