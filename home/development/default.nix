@@ -16,14 +16,9 @@
     gdb
     lldb
 
-    rust-analyzer
-    cargo # rust package manager
-    rustfmt
-
     stylua
     lua-language-server
 
-    nodejs
 
 
     # db related
@@ -59,7 +54,6 @@
     direnv = {
       enable = true;
       nix-direnv.enable = true;
-
       enableZshIntegration = true;
       enableBashIntegration = true;
     };

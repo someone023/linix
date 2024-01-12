@@ -13,7 +13,7 @@
     ./wayland
     ./programs
     ./development
-    ./editors
+    #./editors
     # If you want to use modules your own flake exports (from modules/home-manager):
     # outputs.homeManagerModules.example
 
@@ -65,7 +65,6 @@
     xfce.thunar-archive-plugin
     firefox
 
-
     # misc
     mako
     colord
@@ -80,22 +79,37 @@
 
   programs = {
     home-manager.enable = true;
+
   };
+
+
+    manual = {
+      manpages.enable = false;
+      html.enable = false;
+      json.enable = false;
+    };
+
 
 
   home.pointerCursor = {
     gtk.enable = true;
     # x11.enable = true;
-    package = pkgs.bibata-cursors;
-    name = "Bibata-Modern-Classic";
-    size = 16;
+    package = pkgs.catppuccin-cursors.mochaDark;
+    name = "Catppuccin-Mocha-Dark-Cursors";
+    size = 24;
   };
+
 
   gtk = {
     enable = true;
     theme = {
-      package = pkgs.juno-theme;
-      name = "Juno-mirage";
+      name = "Catppuccin-Mocha-Compact-Pink-Dark";
+      package = pkgs.catppuccin-gtk.override {
+        accents = [ "pink" ];
+        size = "compact";
+        #tweaks = [ "rimless" "black" ];
+        variant = "mocha";
+      };
     };
 
     iconTheme = {
@@ -113,5 +127,5 @@
   systemd.user.startServices = "sd-switch";
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
-  home.stateVersion = "23.11";
+  home.stateVersion = "24.05";
 }

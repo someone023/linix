@@ -14,7 +14,6 @@
     loupe
 
     # videos
-    celluloid
     streamlink
     libcaca
 
