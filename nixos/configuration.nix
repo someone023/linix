@@ -122,7 +122,6 @@
   console.keyMap = "us";
 
   documentation.dev.enable = true;
-  environment.pathsToLink = [ "/share/zsh" ];
 
   programs = {
     less.enable = true;
@@ -133,7 +132,7 @@
         config = {
           user.name = "Ali Erkol";
           user.email = "a.erkol@tu-braunschweig.com";
-        };
+       };
       };
 
     zsh = {
@@ -158,6 +157,7 @@
     btop
     wget
     curl
+    neovim
   ];
 
 
@@ -201,7 +201,6 @@
     ];
   };
 
-  system.stateVersion = "23.11"; # Did you read the comment?
+  system.stateVersion = "24.05"; # Did you read the comment?
 
 }
-
