@@ -13,7 +13,6 @@
     ./wayland
     ./programs
     ./development
-    #./editors
     # If you want to use modules your own flake exports (from modules/home-manager):
     # outputs.homeManagerModules.example
 
@@ -83,8 +82,8 @@
 
   programs = {
     home-manager.enable = true;
-  };
 
+  };
 
 
     manual = {

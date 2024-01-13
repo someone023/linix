@@ -157,7 +157,6 @@
     btop
     wget
     curl
-    neovim
   ];
 
 
