@@ -24,7 +24,10 @@
     # ./nvim.nix
   ];
 
+  news.display = "silent";
+
   nixpkgs = {
+
     # You can add overlays here
     overlays = [
       # Add overlays your own flake exports (from overlays and pkgs dir):
@@ -57,6 +60,7 @@
     homeDirectory = "/home/wasd";
   };
 
+
   # Add stuff for your user as you see fit:
   home.packages = with pkgs; [
 
@@ -79,8 +83,8 @@
 
   programs = {
     home-manager.enable = true;
-
   };
+
 
 
     manual = {
