@@ -37,7 +37,6 @@
     , nixpkgs
     , home-manager
     , hyprland
-    #, nixvim
     , ...
     } @ inputs:
     let

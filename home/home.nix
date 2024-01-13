@@ -19,7 +19,7 @@
     # Or modules exported from other flakes (such as nix-colors):
     # inputs.nix-colors.homeManagerModules.default
     inputs.anyrun.homeManagerModules.default
-    # You can also split up your configuration and import pieces of it here:
+ # You can also split up your configuration and import pieces of it here:
     # ./nvim.nix
   ];
 
@@ -58,16 +58,12 @@
     username = "wasd";
     homeDirectory = "/home/wasd";
   };
-
-
   # Add stuff for your user as you see fit:
   home.packages = with pkgs; [
 
 
     xfce.thunar
     xfce.thunar-archive-plugin
-    firefox
-
     # misc
     mako
     colord
