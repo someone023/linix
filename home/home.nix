@@ -1,5 +1,3 @@
-# This is your home-manager configuration file
-# Use this to configure your home environment (it replaces ~/.config/nixpkgs/home.nix)
 {
   inputs,
   outputs,
@@ -8,12 +6,11 @@
   pkgs,
   ...
 }: {
-  # You can import other home-manager modules here
   imports = [
     ./shell
-    ./wayland
+    ./gui
     ./programs
-    ./development
+    ./dev
     ./services
     # If you want to use modules your own flake exports (from modules/home-manager):
     # outputs.homeManagerModules.example
@@ -21,14 +18,11 @@
     # Or modules exported from other flakes (such as nix-colors):
     # inputs.nix-colors.homeManagerModules.default
     inputs.anyrun.homeManagerModules.default
-    # You can also split up your configuration and import pieces of it here:
-    # ./nvim.nix
   ];
 
   news.display = "silent";
 
   nixpkgs = {
-    # You can add overlays here
     overlays = [
       # Add overlays your own flake exports (from overlays and pkgs dir):
       outputs.overlays.additions
@@ -59,7 +53,6 @@
     username = "wasd";
     homeDirectory = "/home/wasd";
   };
-  # Add stuff for your user as you see fit:
   home.packages = with pkgs; [
     webcord
     xfce.thunar

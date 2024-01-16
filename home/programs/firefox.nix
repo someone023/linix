@@ -50,8 +50,6 @@
           updateInterval = 24 * 60 * 60 * 1000; # every day
           definedAliases = ["@nw"];
         };
-        "Bing".metaData.hidden = true;
-        "Amazon".metaData.hidden = true;
         "Wikipedia".metaData.hidden = true;
         "Google".metaData.alias = "@g";
       };
