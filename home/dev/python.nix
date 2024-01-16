@@ -8,10 +8,9 @@
             # Misc
             pip
             setuptools
+            dbus-python
           ]
       ))
-
-      mypy
     ];
 
     shellAliases = {

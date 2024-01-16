@@ -9,9 +9,10 @@
   imports = [
     ./shell
     ./gui
-    ./programs
     ./dev
     ./services
+    ./tui
+    ./media.nix
     # If you want to use modules your own flake exports (from modules/home-manager):
     # outputs.homeManagerModules.example
 
