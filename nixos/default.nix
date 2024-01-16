@@ -1,12 +1,21 @@
 {pkgs, ...}: {
   imports = [
     # Include the results of the hardware scan.
-    ./hardware-configuration.nix
+    ./hardware
     ./services
     ./programs
     ./core
-    ./sound.nix
-    ./configuration.nix
-    ./fonts.nix
+    ./network
+    ./nix.nix
   ];
+
+  networking.hostName = "linix";
+  documentation.dev.enable = true;
+
+  i18n = {
+    defaultLocale = "en_US.UTF-8";
+    supportedLocales = [
+      "en_US.UTF-8/UTF-8"
+    ];
+  };
 }

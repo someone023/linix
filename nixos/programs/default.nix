@@ -1,7 +1,18 @@
-{
+{pkgs, ...}: {
   imports = [
     ./qt.nix
     ./xdg.nix
+    ./git.nix
+    ./zsh.nix
+  ];
+
+  environment.systemPackages = with pkgs; [
+    psmisc # killall/pstree/prtstat/fuser/...
+    lm_sensors
+    ethtool
+    btop
+    wget
+    curl
   ];
 
   programs = {

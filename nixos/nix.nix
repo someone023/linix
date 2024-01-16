@@ -41,6 +41,10 @@
       max-jobs = "auto";
       http-connections = 128;
       max-substitution-jobs = 128;
+      builders-use-substitutes = true;
+
+      keep-derivations = true;
+      keep-outputs = true;
 
       log-lines = 25;
 
@@ -50,18 +54,30 @@
 
       warn-dirty = false;
 
-      trusted-users = ["root" "wasd"];
-
-      gc = {
-        automatic = true;
-        dates = "weekly";
-        options = "--delete-older-than 2d";
-      };
-
       # Enable flakes and new 'nix' command
       experimental-features = "nix-command flakes";
+
+      trusted-users = ["root" "wasd"];
+
       # Deduplicate and optimize nix store
-      auto-optimise-store = true;
+      #auto-optimise-store = true;
+
+      substituters = [
+        "https://nix-community.cachix.org"
+        "https://hyprland.cachix.org"
+        "https://anyrun.cachix.org"
+      ];
+
+      trusted-public-keys = [
+        "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+        "anyrun.cachix.org-1:pqBobmOjI7nKlsUMV25u9QHa9btJK65/C8vnO3p346s="
+        "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
+      ];
+    };
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 2d";
     };
   };
 
@@ -74,4 +90,6 @@
       value.source = value.flake;
     })
     config.nix.registry;
+
+  system.stateVersion = "24.05"; # Did you read the comment?
 }

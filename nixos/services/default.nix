@@ -6,8 +6,23 @@
     ./power.nix
   ];
 
-  services.   xserver = {
-    layout = "de";
-    xkbVariant = "us";
+  services = {
+    dbus.implementation = "broker";
+
+    fwupd = {
+      enable = true;
+    };
+    psd = {
+      enable = true;
+      resyncTimer = "10m";
+    };
+
+    xserver = {
+      layout = "de";
+      xkbVariant = "us";
+    };
+  };
+  console = {
+    keyMap = "us";
   };
 }
