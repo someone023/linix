@@ -1,13 +1,12 @@
-{ pkgs
-, config
-, ...
-}:
 {
+  pkgs,
+  config,
+  ...
+}: {
   home.packages = with pkgs; [
     # audio control
     pavucontrol
     playerctl
-    pulsemixer
 
     # images
     imv
@@ -16,14 +15,13 @@
     # videos
     streamlink
     libcaca
-
   ];
 
   programs = {
     mpv = {
       enable = true;
       #defaultProfiles = [ "gpu-hq" ];
-      scripts = [ pkgs.mpvScripts.mpris ];
+      scripts = [pkgs.mpvScripts.mpris];
       config = {
         vo = "sdl";
         hwdec = "auto";
@@ -34,7 +32,6 @@
       };
     };
   };
-
 
   services = {
     playerctld.enable = true;

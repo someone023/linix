@@ -28,6 +28,8 @@
 
     initExtra = ''
       
+      
+      export NEOVIM_BIN="/home/wasd/nixvim/result/bin/nvim"
       # search history based on what's typed in the prompt
       autoload -U history-search-end
       zle -N history-beginning-search-backward-end history-search-end
@@ -89,6 +91,7 @@
 
         us = "systemctl --user";
         rs = "sudo systemctl";
+        nvim = "/home/wasd/nixvim/result/bin/nvim";
       }
       // lib.optionalAttrs (config.programs.bat.enable == true) { cat = "bat"; };
     shellGlobalAliases = { eza = "eza --icons --git"; };

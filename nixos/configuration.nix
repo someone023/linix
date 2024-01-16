@@ -1,11 +1,12 @@
 # This is your system's configuration file.
 # Use this to configure your system environment (it replaces /etc/nixos/configuration.nix)
-{ inputs
-, outputs
-, lib
-, config
-, pkgs
-, ...
+{
+  inputs,
+  outputs,
+  lib,
+  config,
+  pkgs,
+  ...
 }: {
   # You can import other NixOS modules here
   imports = [
@@ -40,7 +41,6 @@
     };
 
     enableRedistributableFirmware = lib.mkDefault true;
-    brillo.enable = true;
   };
 
   services = {
@@ -61,7 +61,6 @@
 
     # battery info & stuff
     upower.enable = true;
-
   };
 
   nixpkgs = {
@@ -93,10 +92,10 @@
 
   nix = {
     # Register each flake input
-    registry = (lib.mapAttrs (_: flake: { inherit flake; })) ((lib.filterAttrs (_: lib.isType "flake")) inputs);
+    registry = (lib.mapAttrs (_: flake: {inherit flake;})) ((lib.filterAttrs (_: lib.isType "flake")) inputs);
 
     # Specify a custom Nix path
-    nixPath = [ "/etc/nix/path" ];
+    nixPath = ["/etc/nix/path"];
 
     # Set Nix daemon settings
     settings = {
@@ -111,11 +110,11 @@
   #To make nix3 commands consistent with your flake
   environment.etc =
     lib.mapAttrs'
-      (name: value: {
-        name = "nix/path/${name}";
-        value.source = value.flake;
-      })
-      config.nix.registry;
+    (name: value: {
+      name = "nix/path/${name}";
+      value.source = value.flake;
+    })
+    config.nix.registry;
 
   networking.hostName = "linix";
 
@@ -126,23 +125,22 @@
   programs = {
     less.enable = true;
 
-    git =
-      {
-        enable = true;
-        config = {
-          user.name = "Ali Erkol";
-          user.email = "a.erkol@tu-braunschweig.com";
-       };
+    git = {
+      enable = true;
+      config = {
+        user.name = "Ali Erkol";
+        user.email = "a.erkol@tu-braunschweig.com";
       };
+    };
 
     zsh = {
       enable = true;
       autosuggestions.enable = true;
       syntaxHighlighting = {
         enable = true;
-        patterns = { " rm - rf * " = " fg=black,bg=red"; };
-        styles = { "alias" = "fg=magenta"; };
-        highlighters = [ "main" "brackets" "pattern" ];
+        patterns = {" rm - rf * " = " fg=black,bg=red";};
+        styles = {"alias" = "fg=magenta";};
+        highlighters = ["main" "brackets" "pattern"];
       };
     };
   };
@@ -150,7 +148,6 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-
     psmisc # killall/pstree/prtstat/fuser/...
     lm_sensors
     ethtool
@@ -159,7 +156,6 @@
     curl
   ];
 
-
   users.users = {
     wasd = {
       isNormalUser = true;
@@ -167,7 +163,7 @@
       openssh.authorizedKeys.keys = [
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINhqO14oVhYp3iAYnKH1h43czDOxy6C/zU0FRvTQ2MP9 ali"
       ];
-      extraGroups = [ "input" "libvirtd" "networkmanager" "plugdev" "transmission" "video" "wheel" ];
+      extraGroups = ["input" "libvirtd" "networkmanager" "plugdev" "transmission" "video" "wheel"];
     };
   };
 
@@ -185,7 +181,7 @@
   };
 
   nix.settings = {
-    trusted-users = [ "wasd" ];
+    trusted-users = ["wasd"];
 
     substituters = [
       "https://nix-community.cachix.org"
@@ -201,5 +197,4 @@
   };
 
   system.stateVersion = "24.05"; # Did you read the comment?
-
 }
