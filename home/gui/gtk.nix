@@ -18,7 +18,7 @@
     gtk2.configLocation = "${config.xdg.configHome}/gtk-2.0/gtkrc";
 
     iconTheme = {
-      package = pkgs.rose-pine-icon-theme-unstable;
+      package = pkgs.rose-pine-icon-theme;
       name = "rose-pine";
     };
 

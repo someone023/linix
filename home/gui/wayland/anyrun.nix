@@ -1,7 +1,11 @@
-{ pkgs
-, inputs
-, ...
+{
+  pkgs,
+  inputs,
+  ...
 }: {
+  imports = [
+    inputs.anyrun.homeManagerModules.default
+  ];
   programs.anyrun = {
     enable = true;
 
@@ -74,6 +78,5 @@
         padding: .3rem;
       }
     '';
-
   };
 }

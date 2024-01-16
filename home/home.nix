@@ -1,8 +1,6 @@
 {
   inputs,
   outputs,
-  lib,
-  config,
   pkgs,
   ...
 }: {
@@ -12,12 +10,10 @@
     ./dev
     ./services
     ./tui
-    # If you want to use modules your own flake exports (from modules/home-manager):
     # outputs.homeManagerModules.example
 
     # Or modules exported from other flakes (such as nix-colors):
     # inputs.nix-colors.homeManagerModules.default
-    inputs.anyrun.homeManagerModules.default
   ];
 
   news.display = "silent";
@@ -54,19 +50,8 @@
     homeDirectory = "/home/wasd";
   };
   home.packages = with pkgs; [
-    webcord
-    xfce.thunar
-    xfce.thunar-archive-plugin
-    # misc
-    mako
-    colord
     ffmpegthumbnailer
-    imagemagick
-    xdotool
-    rizin
-    xcolor
     ffmpeg
-    nixpkgs-fmt
     neovide
   ];
 
@@ -78,37 +63,6 @@
     manpages.enable = false;
     html.enable = false;
     json.enable = false;
-  };
-
-  home.pointerCursor = {
-    gtk.enable = true;
-    # x11.enable = true;
-    package = pkgs.catppuccin-cursors.mochaDark;
-    name = "Catppuccin-Mocha-Dark-Cursors";
-    size = 24;
-  };
-
-  gtk = {
-    enable = true;
-    theme = {
-      name = "Catppuccin-Mocha-Compact-Pink-Dark";
-      package = pkgs.catppuccin-gtk.override {
-        accents = ["pink"];
-        size = "compact";
-        #tweaks = [ "rimless" "black" ];
-        variant = "mocha";
-      };
-    };
-
-    iconTheme = {
-      package = pkgs.papirus-icon-theme;
-      name = "Papirus-Dark";
-    };
-
-    font = {
-      name = "JetBrainsMono";
-      size = 11;
-    };
   };
 
   # Nicely reload system units when changing configs
