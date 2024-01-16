@@ -1,5 +1,5 @@
 {pkgs, ...}: {
-  imports = [./python.nix];
+  imports = [./python.nix ./nix.nix];
 
   home.packages = with pkgs;
     [
@@ -22,14 +22,6 @@
       tree-sitter
       fzf
       telescope
-
-      #-- nix
-      nil
-      rnix-lsp
-      # nixd
-      statix # Lints and suggestions for the nix programming language
-      deadnix # Find and remove unused code in .nix source files
-      alejandra # Nix Code Formatter
     ]
     ++ (
       if pkgs.stdenv.isLinux

@@ -8,6 +8,8 @@
       nix-output-monitor
       nixpkgs-review
       statix
+      nil
+      rnix-lsp
       vimPluginsUpdater
     ];
   };

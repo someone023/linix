@@ -1,8 +1,9 @@
-{ config
-, pkgs
-, ...
+{
+  config,
+  pkgs,
+  ...
 }: {
-  home.packages = [ pkgs.gh ];
+  home.packages = [pkgs.gh];
 
   programs.git = {
     enable = true;
@@ -18,7 +19,7 @@
       merge.conflictstyle = "diff3";
     };
 
-    ignores = [ "*~" "*.swp" "*result*" ".direnv" "node_modules" ];
+    ignores = ["*~" "*.swp" "*result*" ".direnv" "node_modules"];
 
     signing = {
       key = "${config.home.homeDirectory}/.ssh/id_ed25519";

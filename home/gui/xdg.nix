@@ -1,6 +1,9 @@
-{ config, pkgs, ... }:
-let
-  browser = [ "firefox" ];
+{
+  config,
+  pkgs,
+  ...
+}: let
+  browser = ["firefox"];
 
   # XDG MIME types
   associations = builtins.mapAttrs (_: v: (map (e: "${e}.desktop") v)) {
@@ -12,44 +15,39 @@ let
     "application/xhtml+xml" = browser;
     "text/html" = browser;
     "x-scheme-handler/about" = browser;
-    "x-scheme-handler/chrome" = [ "chromium-browser" ];
     "x-scheme-handler/ftp" = browser;
     "x-scheme-handler/http" = browser;
     "x-scheme-handler/https" = browser;
     "x-scheme-handler/unknown" = browser;
 
-    "audio/*" = [ "celluloid" ];
-    "video/*" = [ "mpv" ];
-    "image/*" = [ "loupe" ];
+    "audio/*" = ["mpv"];
+    "video/*" = ["mpv"];
+    "image/*" = ["imv"];
     "application/json" = browser;
     "application/pdf" = browser;
     "x-scheme-handler/discord" = browser;
   };
-in
-{
-
+in {
   home.packages = with pkgs; [
     xdg-utils # provides cli tools such as `xdg-mime` `xdg-open`
     xdg-user-dirs
   ];
 
-  xdg =
-    {
+  xdg = {
+    enable = true;
+    cacheHome = config.home.homeDirectory + "/.local/cache";
+
+    mimeApps = {
       enable = true;
-      cacheHome = config.home.homeDirectory + "/.local/cache";
+      defaultApplications = associations;
+    };
 
-      mimeApps = {
-        enable = true;
-        defaultApplications = associations;
-      };
-
-
-      userDirs = {
-        enable = true;
-        createDirectories = true;
-        extraConfig = {
-          XDG_SCREENSHOTS_DIR = "${config.xdg.userDirs.pictures}/Screenshots";
-        };
+    userDirs = {
+      enable = true;
+      createDirectories = true;
+      extraConfig = {
+        XDG_SCREENSHOTS_DIR = "${config.xdg.userDirs.pictures}/Screenshots";
       };
     };
+  };
 }

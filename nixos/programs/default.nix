@@ -10,7 +10,6 @@
     psmisc # killall/pstree/prtstat/fuser/...
     lm_sensors
     ethtool
-    btop
     wget
     curl
   ];

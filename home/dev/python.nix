@@ -12,9 +12,5 @@
           ]
       ))
     ];
-
-    shellAliases = {
-      pyp = "PYTHONPATH=. python";
-    };
   };
 }
