@@ -1,6 +1,5 @@
 {
   imports = [
-    ./home-manager.nix
     ./qt.nix
     ./xdg.nix
   ];

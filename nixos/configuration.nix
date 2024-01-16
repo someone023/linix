@@ -17,19 +17,8 @@
     # inputs.hardware.nixosModules.common-cpu-amd
     # inputs.hardware.nixosModules.common-ssd
 
-    # You can also split up your configuration and import pieces of it here:
-    # ./users.nix
-    ../modules/nixos/core-desktop.nix
-
     # Import your generated (nixos-generate-config) hardware configuration
-    ./hardware-configuration.nix
   ];
-
-  boot = {
-    kernelPackages = pkgs.linuxPackages_latest;
-    loader.systemd-boot.enable = true;
-    loader.efi.canTouchEfiVariables = true;
-  };
 
   hardware = {
     opengl = {
@@ -44,23 +33,15 @@
   };
 
   services = {
-    thermald = {
-      enable = lib.mkDefault true;
-    };
     fwupd = {
       enable = lib.mkDefault true;
     };
-
-    power-profiles-daemon.enable = true;
 
     # profile-sync-daemon
     psd = {
       enable = true;
       resyncTimer = "10m";
     };
-
-    # battery info & stuff
-    upower.enable = true;
   };
 
   nixpkgs = {
@@ -82,13 +63,10 @@
       # })
     ];
     # Configure your nixpkgs instance
-    config = {
-      # Disable if you don't want unfree packages
-      nixpkgs.config.allowUnfree = lib.mkForce true;
-    };
-  };
+    config.nixpkgs.config.allowUnfree = lib.mkForce true;
 
-  nixpkgs.config.allowUnfree = true;
+    config.allowUnfree = lib.mkForce true;
+  };
 
   nix = {
     # Register each flake input
@@ -155,17 +133,6 @@
     wget
     curl
   ];
-
-  users.users = {
-    wasd = {
-      isNormalUser = true;
-      shell = pkgs.zsh;
-      openssh.authorizedKeys.keys = [
-        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINhqO14oVhYp3iAYnKH1h43czDOxy6C/zU0FRvTQ2MP9 ali"
-      ];
-      extraGroups = ["input" "libvirtd" "networkmanager" "plugdev" "transmission" "video" "wheel"];
-    };
-  };
 
   networking.networkmanager.enable = true;
   # This setups a SSH server. Very important if you're setting up a headless system.
