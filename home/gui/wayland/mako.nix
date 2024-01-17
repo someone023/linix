@@ -1,6 +1,7 @@
-{ pkgs
-, inputs
-, ...
+{
+  pkgs,
+  inputs,
+  ...
 }: {
   services.mako = {
     enable = true;
@@ -31,6 +32,5 @@
       [mode=do-not-disturb]
       invisible=1
     '';
-
   };
 }

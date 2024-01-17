@@ -5,11 +5,10 @@
   ...
 }: {
   imports = [
-    ./shell
     ./gui
     ./dev
     ./services
-    ./tui
+    ./terminal
     # outputs.homeManagerModules.example
 
     # Or modules exported from other flakes (such as nix-colors):

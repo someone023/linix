@@ -5,10 +5,6 @@
     iotop
     iftop
 
-    # misc
-    libnotify
-    # wireguard-tools # manage wireguard vpn manually, via wg-quick
-
     # system call monitoring
     strace # system call monitoring
     ltrace # library call monitoring

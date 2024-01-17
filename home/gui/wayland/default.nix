@@ -9,7 +9,7 @@
 # Wayland config
 {
   imports = [
-    ./anyrun.nix
+    ./anyrun
     ./hyprland
     ./mako.nix
     #./hyprpaper.nix
@@ -20,9 +20,13 @@
   home.packages = with pkgs; [
     # utils
     wl-clipboard
+    wl-clip-persist
     wlogout
     wlr-randr
     xdg-desktop-portal-hyprland
+
+    # misc
+    libnotify
 
     cliphist
 

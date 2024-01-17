@@ -1,4 +1,24 @@
 {pkgs, ...}: {
+  home.packages = with pkgs; [
+    # grep replacement
+    ripgrep
+
+    # dns client
+    dogdns
+
+    # neofetch but for git repos
+    onefetch
+
+    # man pages for tiktok attention span mfs
+    tealdeer
+
+    # faster find
+    fd
+
+    # syncthnig for acoustic people
+    rsync
+  ];
+
   programs = {
     man.enable = true;
     eza.enable = true;

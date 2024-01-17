@@ -1,25 +1,19 @@
-{ default, ... }:
-let
-
+{default, ...}: let
   # binds $mod + [shift +] {1..10} to [move to] workspace {1..10}
   workspaces = builtins.concatLists (builtins.genList
     (
-      x:
-      let
-        ws =
-          let
-            c = (x + 1) / 10;
-          in
+      x: let
+        ws = let
+          c = (x + 1) / 10;
+        in
           builtins.toString (x + 1 - (c * 10));
-      in
-      [
+      in [
         "$mod, ${ws}, workspace, ${toString (x + 1)}"
         "$mod SHIFT, ${ws}, movetoworkspace, ${toString (x + 1)}"
       ]
     )
     10);
-in
-{
+in {
   wayland.windowManager.hyprland.settings = {
     # mouse movements
     bindm = [
@@ -30,8 +24,6 @@ in
 
     # binds
     bind =
-      let
-      in
       [
         # compositor commands
         "$mod SHIFT, E, exec, pkill Hyprland"
@@ -45,7 +37,6 @@ in
         "$mod, T, togglefloating,"
         "$mod, P, pseudo,"
         "$mod ALT, ,resizeactive,"
-
 
         # utility
         # terminal
@@ -85,7 +76,6 @@ in
         "SUPER_SHIFT, right, movewindow, r"
         "SUPER_SHIFT, up,    movewindow, u"
         "SUPER_SHIFT, down,  movewindow, d"
-
 
         "SUPER, mouse:276, fullscreen, 0 "
         "SUPER, mouse:276, exec, $notifycmd 'Fullscreen Mode'"

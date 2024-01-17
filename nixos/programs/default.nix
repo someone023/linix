@@ -4,7 +4,6 @@
     ./qt.nix
     ./xdg.nix
     ./git.nix
-    ./zsh.nix
   ];
 
   environment.systemPackages = with pkgs; [
