@@ -18,6 +18,7 @@ with pkgs; {
   du = getExe du-dust;
   ps = getExe procs;
   m = "mkdir -p";
+  cd = "z";
   fcd = "cd $(find -type d | fzf)";
   l = "ls -lF --time-style=long-iso --icons";
   sc = "sudo systemctl";
@@ -27,8 +28,6 @@ with pkgs; {
   tree = "${getExe eza} --tree --icons --tree";
   kys = "shutdown now";
   rebuild = "sudo nixos-rebuild switch --flake .#linix";
-  g = "git";
-  n = "nix";
   mnt = "udisksctl mount -b";
   umnt = "udisksctl unmount -b";
   burn = "pkill -9";

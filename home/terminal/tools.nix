@@ -15,6 +15,8 @@
     # faster find
     fd
 
+    ffmpeg-full
+
     # syncthnig for acoustic people
     rsync
   ];
@@ -23,6 +25,11 @@
     man.enable = true;
     eza.enable = true;
     dircolors = {
+      enable = true;
+      enableZshIntegration = true;
+    };
+
+    zoxide = {
       enable = true;
       enableZshIntegration = true;
     };

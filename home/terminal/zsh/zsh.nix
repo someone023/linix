@@ -28,17 +28,13 @@
     };
 
     initExtra = ''
-      # search history based on what's typed in the prompt
-      autoload -U history-search-end
-      zle -N history-beginning-search-backward-end history-search-end
-      zle -N history-beginning-search-forward-end history-search-end
-      bindkey "^[OA" history-beginning-search-backward-end
-      bindkey "^[OB" history-beginning-search-forward-end
-
       # C-right / C-left for word skips
       bindkey "^[[1;5C" forward-word
       bindkey "^[[1;5D" backward-word
-
+      function n {
+        cd "$(fd . "''${HOME}" --type d --color never | fzf --select-1 --query "''${*}")"
+        ls
+      }
     '';
 
     shellAliases = import ./aliases.nix {inherit pkgs lib config;};
