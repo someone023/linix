@@ -1,5 +1,6 @@
 {pkgs, ...}: {
   imports = [
+    ./hyprland.nix
     ./qt.nix
     ./xdg.nix
     ./git.nix
