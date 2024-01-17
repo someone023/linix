@@ -1,4 +1,4 @@
-{
+{pkgs, ...}: {
   imports = [
     ./keyd.nix
     ./location.nix
@@ -7,7 +7,11 @@
   ];
 
   services = {
-    dbus.implementation = "broker";
+    dbus = {
+      enable = true;
+      implementation = "broker";
+      packages = with pkgs; [dconf gcr];
+    };
 
     fwupd = {
       enable = true;

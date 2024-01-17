@@ -1,7 +1,13 @@
 {lib, ...}:
 # networking configuration
 {
-  networking.wireless.iwd.enable = true;
+  imports = [./security.nix];
+
+  networking = {
+    wireless.iwd.enable = true;
+
+    #useDHCP = false;
+  };
 
   #networking.networkmanager = {
   #  enable = true;
@@ -17,6 +23,6 @@
         PasswordAuthentication = false;
       };
     };
-    #resolved.enable = true;
+    resolved.enable = true;
   };
 }

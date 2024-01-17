@@ -48,6 +48,8 @@
 
       log-lines = 25;
 
+      # auto-optimise-store = true;
+
       # If set to true, Nix will fall back to building from source if a binary substitute
       # fails. This is equivalent to the –fallback flag. The default is false.
       fallback = true;

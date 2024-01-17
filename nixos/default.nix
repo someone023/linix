@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  lib,
+  ...
+}: {
   imports = [
     # Include the results of the hardware scan.
     ./hardware
@@ -8,6 +12,8 @@
     ./network
     ./nix.nix
   ];
+
+  time.timeZone = lib.mkDefault "Europe/Berlin";
 
   networking.hostName = "linix";
   documentation.dev.enable = true;
