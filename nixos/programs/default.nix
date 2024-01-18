@@ -6,14 +6,6 @@
     ./git.nix
   ];
 
-  environment.systemPackages = with pkgs; [
-    psmisc # killall/pstree/prtstat/fuser/...
-    lm_sensors
-    ethtool
-    wget
-    curl
-  ];
-
   programs = {
     # make HM-managed GTK stuff work
     dconf.enable = true;

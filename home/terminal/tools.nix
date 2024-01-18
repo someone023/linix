@@ -2,12 +2,10 @@
   home.packages = with pkgs; [
     # grep replacement
     ripgrep
-
-    # dns client
-    dogdns
-
     # neofetch but for git repos
     onefetch
+
+    fzf
 
     # man pages for tiktok attention span mfs
     tealdeer
@@ -19,6 +17,14 @@
 
     # syncthnig for acoustic people
     rsync
+
+    # system call monitoring
+    strace # system call monitoring
+    ltrace # library call monitoring
+
+    lsof # list open files
+
+    psmisc # killall/pstree/prtstat/fuser/...
   ];
 
   programs = {

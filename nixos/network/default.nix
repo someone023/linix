@@ -1,4 +1,8 @@
-{lib, ...}:
+{
+  lib,
+  pkgs,
+  ...
+}:
 # networking configuration
 {
   imports = [./security.nix];
@@ -13,6 +17,15 @@
   #  enable = true;
   #  wifi.backend = "iwd";
   #};
+
+  environment.systemPackages = with pkgs; [
+    ethtool
+    # dns client
+    dogdns
+
+    wget
+    curl
+  ];
 
   services = {
     openssh = {
