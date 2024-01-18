@@ -6,7 +6,7 @@
 }:
 with lib;
 with pkgs; {
-  nvim = "/home/wasd/nixvim/result/bin/nvim";
+  #nvim = "/home/wasd/nixvim/result/bin/nvim";
   cat = "${getExe bat} --style=plain";
   uuid = "cat /proc/sys/kernel/random/uuid";
   grep = getExe ripgrep;

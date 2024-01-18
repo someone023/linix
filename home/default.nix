@@ -9,9 +9,9 @@
     ./dev
     ./services
     ./terminal
+    ./neovim
     # outputs.homeManagerModules.example
     inputs.nix-index-db.hmModules.nix-index
-
     # Or modules exported from other flakes (such as nix-colors):
     # inputs.nix-colors.homeManagerModules.default
   ];
