@@ -6,19 +6,11 @@
     ];
 
     "$mod" = "SUPER";
-    env = [
-      "QT_WAYLAND_DISABLE_WINDOWDECORATION,1"
-      "XDG_SESSION_DESKTOP=Hyprland"
-      "MOZ_DISABLE_RDD_SANDBOX,1"
-      "EGL_PLATFORM,wayland"
-      "MOZ_ENABLE_WAYLAND,1"
-      "QT_QPA_PLATFORMTHEME,qt5ct"
-    ];
 
     exec-once = [
       # set cursor for HL itself
       "hyprctl setcursor pointer 24"
-      #"dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=Hyprland"
+      "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=Hyprland"
     ];
 
     general = {

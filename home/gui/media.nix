@@ -1,14 +1,10 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
-    # audio control
-    pavucontrol
     playerctl
 
     # images
     imv
 
-    # videos
-    streamlink
     libcaca
   ];
   #TODO import media

@@ -11,8 +11,10 @@
     dbus = {
       enable = true;
       implementation = "broker";
-      packages = with pkgs; [dconf gcr];
+      packages = with pkgs; [dconf gcr udisks2];
     };
+
+    udisks2.enable = true;
 
     fwupd = {
       enable = true;

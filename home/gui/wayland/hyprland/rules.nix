@@ -19,7 +19,6 @@
 
       "float,class:udiskie"
 
-      "workspace special silent,class:^(pavucontrol)$"
       "opacity 0.80,class:^(pavucontrol)$"
 
       # throw sharing indicators away
