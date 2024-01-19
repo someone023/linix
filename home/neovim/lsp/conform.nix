@@ -4,13 +4,14 @@
       enable = true;
       formatOnSave = {
         lspFallback = true;
-        timeoutMs = 1000;
+        timeoutMs = 500;
       };
+
       notifyOnError = true;
       formattersByFt = {
         lua = ["stylua"];
-        python = ["black"];
         nix = ["alejandra"];
+        rust = ["rustfmt"];
       };
     };
 

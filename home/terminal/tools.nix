@@ -1,5 +1,7 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
+    neovide
+
     # grep replacement
     ripgrep
     # neofetch but for git repos

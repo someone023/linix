@@ -13,12 +13,14 @@
         "vim"
         "help"
         "query"
+        "rust"
       ];
       grammarPackages = with config.programs.nixvim.plugins.treesitter.package.builtGrammars; [
         lua
         luadoc
         luap
         c
+        rust
         cmake
         nix
         python

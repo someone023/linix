@@ -19,7 +19,13 @@
     WLR_RENDERER = "vulkan";
     XDG_SESSION_TYPE = "wayland";
     SDL_VIDEODRIVER = "wayland";
-    XDG_CACHE_HOME = lib.mkForce "/home/wasd/.cache";
     CLUTTER_BACKEND = "wayland";
+
+    XDG_CACHE_HOME = lib.mkForce "$HOME/.cache";
+    XDG_CONFIG_HOME = lib.mkForce "$HOME/.config";
+    XDG_DATA_HOME = lib.mkForce "$HOME/.local/share";
+    XDG_BIN_HOME = lib.mkForce "$HOME/.local/bin";
+    # To prevent firefox from creating ~/Desktop.
+    XDG_DESKTOP_DIR = lib.mkForce "$HOME";
   };
 }

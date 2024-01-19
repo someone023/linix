@@ -2,6 +2,10 @@
   programs.nixvim = {
     plugins.notify = {
       enable = true;
+      backgroundColour = "#000000";
+      fps = 60;
+      render = "default";
+      timeout = 4000;
     };
 
     plugins.noice = {
@@ -23,7 +27,9 @@
       {
         mode = "n";
         key = "<leader>C";
-        action = "<cmd>lua require('noice').cmd('dismiss')<CR>";
+        action = ''
+          <cmd>lua require("notify").dismiss({ silent = true, pending = true })<cr>
+        '';
         options.desc = "Clear Messages";
       }
     ];

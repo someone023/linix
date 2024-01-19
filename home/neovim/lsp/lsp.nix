@@ -10,6 +10,17 @@
           clangd.enable = true;
           lua-ls.enable = true;
           yamlls.enable = true;
+
+          rust-analyzer = {
+            enable = true;
+            installCargo = true;
+            installRustc = true;
+            settings = {
+              procMacro = {
+                enable = true;
+              };
+            };
+          };
         };
 
         keymaps = {

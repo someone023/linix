@@ -64,7 +64,7 @@
         -- Neovide
       if g.neovide then
         -- Neovide options
-        g.neovide_fullscreen = false
+        -- g.neovide_fullscreen = false
         g.neovide_hide_mouse_when_typing = false
         g.neovide_refresh_rate = 120
         g.neovide_cursor_vfx_mode = "ripple"
