@@ -10,7 +10,8 @@
   networking = {
     wireless.iwd.enable = true;
 
-    #useDHCP = false;
+    useDHCP = lib.mkForce false;
+    interfaces.wlan0.useDHCP = lib.mkForce true;
   };
 
   #networking.networkmanager = {

@@ -1,7 +1,14 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  inputs,
+  ...
+}: {
   imports = [
     ./hardware-configuration.nix
     ./opengl.nix
+    inputs.disko.nixosModules.disko
+
+    ./disko-config.nix
     ./bluetooth.nix
     ./brillo.nix
   ];

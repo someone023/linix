@@ -11,6 +11,8 @@
     ./core
     ./network
     ./nix.nix
+
+    ./impermanence.nix
   ];
 
   time.timeZone = lib.mkDefault "Europe/Berlin";
