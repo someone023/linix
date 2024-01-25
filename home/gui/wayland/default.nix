@@ -19,21 +19,22 @@
   ];
 
   home.packages = with pkgs; [
-    # utils
     wl-clipboard
     wl-clip-persist
     wlogout
     wlr-randr
-    xdg-desktop-portal-hyprland
-
-    # misc
     libnotify
-
     cliphist
-
-    #themes
-    bibata-cursors
   ];
+
+  xdg.portal = {
+    enable = true;
+    config.common.default = "*";
+    extraPortals = [
+      pkgs.xdg-desktop-portal-gtk
+      pkgs.xdg-desktop-portal-hyprland
+    ];
+  };
 
   # fake a tray to let apps start
   # https://github.com/nix-community/home-manager/issues/2064

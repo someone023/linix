@@ -15,35 +15,38 @@
 
     general = {
       gaps_in = 4;
-      gaps_out = 4;
+      gaps_out = 6;
       border_size = 1;
-      "col.active_border" = "0xffb4befe 0xff89dceb 45deg";
-      "col.inactive_border" = "0xff313244 0xff45475a 45deg";
+      "col.active_border" = "0xff7c00ff 0xffff007c 45deg";
+      "col.inactive_border" = "0xff666666";
       resize_on_border = true;
       "layout" = "dwindle";
       no_border_on_floating = false;
       no_cursor_warps = false;
+
+      sensitivity = 0.6;
     };
 
     decoration = {
-      rounding = 16;
+      rounding = 9;
       blur = {
         enabled = true;
-        brightness = 1.0;
-        contrast = 1.0;
-        noise = 0.02;
-
-        passes = 4;
         size = 10;
+        passes = 4;
+        ignore_opacity = true;
+        new_optimizations = 1;
+        xray = true;
+        contrast = 0.7;
+        brightness = 0.8;
+        vibrancy = 0.2;
       };
 
       drop_shadow = true;
       shadow_ignore_window = true;
       shadow_offset = "0 2";
-      shadow_range = 8;
+      shadow_range = 20;
       shadow_render_power = 3;
-      "col.shadow" = "0xffb4befe";
-      "col.shadow_inactive" = "0x50000000";
+      "col.shadow" = "rgba(00000055)";
     };
 
     animations = {
@@ -62,6 +65,9 @@
         gradients = false;
       };
 
+      "col.border_active" = "rgba(88888888)";
+      "col.border_inactive" = "rgba(00000088)";
+
       #"col.border_active" = "rgba (ca9ee6ff) rgba (f2d5cfff) 45 deg";
       #"col.border_inactive" = "rgba(b4befecc) rgba(6c7086cc) 45deg";
     };
@@ -72,20 +78,21 @@
 
       # focus change on cursor move
       follow_mouse = 1;
-      accel_profile = "flat";
-      touchpad.scroll_factor = 0.1;
+      touchpad.natural_scroll = "no";
     };
 
     dwindle = {
       # keep floating dimentions while tiling
       no_gaps_when_only = 1;
-      pseudotile = true;
+      pseudotile = false;
       preserve_split = true;
     };
 
     misc = {
       # disable auto polling for config file changes
       disable_autoreload = true;
+      disable_splash_rendering = true;
+      enable_swallow = true; # hide windows that spawn other windows
 
       disable_hyprland_logo = true;
       force_default_wallpaper = 0;
@@ -95,6 +102,9 @@
 
       # enable variable refresh rate (effective depending on hardware)
       vrr = 1;
+
+      mouse_move_enables_dpms = true; # enable dpms on mouse/touchpad action
+      key_press_enables_dpms = true; # enable dpms on keyboard action
     };
 
     # touchpad gestures

@@ -14,12 +14,17 @@
 
     # window rules
     windowrulev2 = [
+      "noanim, class:neovide"
       "idleinhibit focus,class:kitty"
       "idleinhibit fullscreen, class:^(firefox)$"
 
       "float,class:udiskie"
 
-      "opacity 0.80,class:^(pavucontrol)$"
+      "float,class:pavucontrol"
+      "float,title:^(Volume Control)$"
+      "size 800 600,title:^(Volume Control)$"
+      "move 75 44%,title:^(Volume Control)$"
+      "float, class:^(imv)$"
 
       # throw sharing indicators away
       "workspace special silent, title:^(Firefox — Sharing Indicator)$"

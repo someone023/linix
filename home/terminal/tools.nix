@@ -1,6 +1,8 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
-    neovide
+    alejandra
+    deadnix
+    statix
 
     # grep replacement
     ripgrep
@@ -9,8 +11,16 @@
 
     fzf
 
-    # man pages for tiktok attention span mfs
-    tealdeer
+    bash
+
+    tree-sitter
+    telescope
+
+    # profiling tool
+    hyperfine
+
+    # ping, but with cool graph
+    gping
 
     # faster find
     fd
@@ -30,13 +40,25 @@
   ];
 
   programs = {
-    man.enable = true;
-    eza.enable = true;
+    direnv = {
+      enable = true;
+      nix-direnv.enable = true;
+      enableZshIntegration = true;
+      enableBashIntegration = true;
+    };
+
+    eza = {
+      enable = true;
+      icons = true;
+      extraOptions = [
+        "--group-directories-first"
+        "--header"
+      ];
+    };
     dircolors = {
       enable = true;
       enableZshIntegration = true;
     };
-
     zoxide = {
       enable = true;
       enableZshIntegration = true;
@@ -51,12 +73,10 @@
         "--exact"
       ];
     };
-    direnv = {
-      enable = true;
-      nix-direnv.enable = true;
-    };
+
+    # man pages for tiktok attention span mfs
     tealdeer = {
-      enable = true;
+      enable = false;
       settings = {
         display = {
           compact = false;
@@ -64,24 +84,6 @@
         };
         updates = {
           auto_update = true;
-        };
-      };
-    };
-    bat = {
-      enable = true;
-      config = {
-        pager = "less -FR";
-        theme = "catppuccin-mocha";
-      };
-      themes = {
-        catppuccin-mocha = {
-          src = pkgs.fetchFromGitHub {
-            owner = "catppuccin";
-            repo = "bat";
-            rev = "ba4d16880d63e656acced2b7d4e034e4a93f74b1";
-            sha256 = "6WVKQErGdaqb++oaXnY3i6/GuH2FhTgK0v4TN4Y0Wbw=";
-          };
-          file = "Catppuccin-mocha.tmTheme";
         };
       };
     };

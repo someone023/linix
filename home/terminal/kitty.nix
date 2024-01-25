@@ -8,6 +8,8 @@
     shellIntegration.enableZshIntegration = true;
 
     settings = {
+      font_family = "monospace";
+      disable_ligatures = "never";
       scrollback_lines = 10000;
       placement_strategy = "center";
 

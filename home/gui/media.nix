@@ -1,10 +1,8 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
     playerctl
-
     # images
     imv
-
     libcaca
   ];
   #TODO import media

@@ -1,6 +1,7 @@
 {
   pkgs,
   inputs,
+  lib,
   ...
 }: {
   programs.firefox = {
@@ -20,11 +21,26 @@
       extensions = with inputs.firefox-addons.packages.${pkgs.system}; [
         ublock-origin
         bitwarden
-        sponsorblock
         refined-github
+        firefox-color
       ];
       search.force = true;
       search.engines = {
+        "Home Manager NixOs" = {
+          urls = [
+            {
+              template = "https://mipmip.github.io/home-manager-option-search/";
+              params = [
+                {
+                  name = "query";
+                  value = "{searchTerms}";
+                }
+              ];
+            }
+          ];
+          icon = "''${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+          definedAliases = ["@hm"];
+        };
         "Nix Packages" = {
           urls = [
             {

@@ -1,9 +1,15 @@
 {
   imports = [
+    ./yazi
+    ./zsh
+    #./wezterm
+    ./helix
+
     ./btop.nix
     ./git.nix
     ./kitty.nix
     ./tools.nix
-    ./zsh
+    ./nix-index.nix
+    ./bat.nix
   ];
 }
