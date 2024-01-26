@@ -8,8 +8,6 @@
       "xray 1, ^(bar|gtk-layer-shell)$"
       "ignorealpha 0.2, ${layers}"
       "ignorealpha 0.5, ^(system-menu|anyrun)$"
-      "ignorezero, notifications"
-      "ignorezero, ^(launcher)$"
     ];
 
     # window rules

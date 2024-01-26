@@ -4,7 +4,7 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
     impermanence.url = "github:nix-community/impermanence";
-
+    
     helix.url = "github:helix-editor/helix";
 
     nix-index-db = {

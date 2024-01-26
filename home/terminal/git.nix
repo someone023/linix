@@ -78,10 +78,10 @@
         "result-*"
       ];
 
-      signing = {
-        key = "CE16E2CA94DC8D6A";
-        signByDefault = true;
-      };
+      #signing = {
+      #key = "CE16E2CA94DC8D6A";
+      #signByDefault = true;
+      # };
 
       extraConfig.gpg.format = "ssh";
     };

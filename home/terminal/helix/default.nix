@@ -26,9 +26,8 @@
     });
 
     settings = {
-      theme = "catppuccin_mocha";
+      theme = "tokyonight";
       editor = {
-        auto-format = true;
         auto-completion = true;
         color-modes = true;
         cursorline = true;

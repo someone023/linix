@@ -19,6 +19,14 @@
         language-servers = [{name = "nil";}];
         formatter.command = "${pkgs.alejandra}/bin/alejandra";
       }
+      {
+        name = "c";
+        auto-format = true;
+        formatter = {
+          command = "${pkgs.clang-tools}/bin/clang-format style=file";
+          args = ["-i"];
+        };
+      }
     ];
     language-server = {
       bash-language-server = {
