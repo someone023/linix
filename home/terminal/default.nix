@@ -5,6 +5,7 @@
     #./wezterm
     ./helix
 
+    ./nix-index.nix
     ./btop.nix
     ./git.nix
     ./kitty.nix

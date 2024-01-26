@@ -1,7 +1,6 @@
 {
   inputs,
   pkgs,
-  config,
   ...
 }: {
   imports = [./languages.nix];
@@ -17,6 +16,8 @@
           "PATH"
           ":"
           (lib.makeBinPath [
+            shellcheck
+            gcc
             clang-tools
             marksman
             nil
@@ -31,6 +32,9 @@
         auto-completion = true;
         color-modes = true;
         cursorline = true;
+        idle-timeout = 1;
+        line-number = "relative";
+        scrolloff = 5;
         completion-replace = true;
         mouse = true;
         rulers = [80];
@@ -42,19 +46,42 @@
           select = "underline";
         };
         indent-guides.render = true;
-        lsp.display-inlay-hints = true;
-        statusline.center = ["position-percentage"];
+        lsp = {
+          display-messages = true;
+          display-inlay-hints = true;
+        };
         true-color = true;
         whitespace.characters = {
-          newline = "↴";
-          tab = "⇥";
+          space = "·";
+          nbsp = "⍽";
+          tab = "→";
+          newline = "⤶";
+        };
+        gutters = ["diagnostics" "line-numbers" "spacer" "diff"];
+        statusline = {
+          left = ["mode" "selections" "spinner" "file-name" "total-line-numbers"];
+          center = [];
+          right = ["diagnostics" "file-encoding" "file-line-ending" "file-type" "position-percentage" "position"];
+          mode = {
+            normal = "NORMAL";
+            insert = "INSERT";
+            select = "SELECT";
+          };
         };
       };
 
-      keys.normal.space.u = {
-        f = ":format"; # format using LSP formatter
-        w = ":set whitespace.render all";
-        W = ":set whitespace.render none";
+      keys.normal = {
+        "{" = "goto_prev_paragraph";
+        "}" = "goto_next_paragraph";
+        "X" = "extend_line_above";
+        "esc" = ["collapse_selection" "keep_primary_selection"];
+        space.q = ":bc";
+        space.space = "file_picker";
+        space.u = {
+          f = ":format"; # format using LSP formatter
+          w = ":set whitespace.render all";
+          W = ":set whitespace.render none";
+        };
       };
     };
   };
