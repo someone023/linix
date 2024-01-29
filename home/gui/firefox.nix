@@ -9,70 +9,22 @@
     package = pkgs.wrapFirefox pkgs.firefox-devedition-unwrapped {
       extraPolicies = {
         DisableFirefoxStudies = true;
+
+
+
         DisablePocket = true;
         DisableTelemetry = true;
-        DisableFirefoxAccounts = true;
         PromptForDownloadLocation = true;
       };
     };
     profiles.default = {
       id = 0;
       name = "dev-edition-default";
-      extensions = with inputs.firefox-addons.packages.${pkgs.system}; [
-        ublock-origin
-        bitwarden
-        refined-github
-        firefox-color
-      ];
       search.force = true;
-      search.engines = {
-        "Home Manager NixOs" = {
-          urls = [
-            {
-              template = "https://mipmip.github.io/home-manager-option-search/";
-              params = [
-                {
-                  name = "query";
-                  value = "{searchTerms}";
-                }
-              ];
-            }
-          ];
-          icon = "''${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-          definedAliases = ["@hm"];
-        };
-        "Nix Packages" = {
-          urls = [
-            {
-              template = "https://search.nixos.org/packages";
-              params = [
-                {
-                  name = "type";
-                  value = "packages";
-                }
-                {
-                  name = "query";
-                  value = "{searchTerms}";
-                }
-              ];
-            }
-          ];
-          icon = "''${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-          definedAliases = ["@np"];
-        };
-        "NixOS Wiki" = {
-          urls = [{template = "https://nixos.wiki/index.php?search={searchTerms}";}];
-          iconUpdateURL = "https://nixos.wiki/favicon.png";
-          updateInterval = 24 * 60 * 60 * 1000; # every day
-          definedAliases = ["@nw"];
-        };
-        "Wikipedia".metaData.hidden = true;
-        "Google".metaData.alias = "@g";
-      };
       settings = {
-        # GENERAL
-        "content.notify.interval" = 100000;
+        "layers.acceleration.force-enabled" = true;
         # GFX
+        "gfx.webrender.all" = true;
         "gfx.canvas.accelerated.cache-items" = 4096;
         "gfx.canvas.accelerated.cache-size" = 512;
         "gfx.content.skia-font-cache-size" = 20;
@@ -85,6 +37,7 @@
         # IMAGE CACHE
         "image.mem.decode_bytes_at_a_time" = 32768;
         # NETWORK
+        "network.predictor.enabled" = true;
         "network.buffer.cache.size" = 262144;
         "network.buffer.cache.count" = 128;
         "network.http.max-connections" = 1800;
@@ -94,15 +47,8 @@
         "network.dnsCacheExpiration" = 3600;
         "network.dns.max_high_priority_threads" = 8;
         "network.ssl_tokens_cache_capacity" = 10240;
-        # SPECULATIVE LOADING
-        "network.dns.disablePrefetch" = true;
-        "network.prefetch-next" = false;
-        "network.predictor.enabled" = false;
         # EXPERIMENTAL
-        "layout.css.grid-template-masonry-value.enabled" = true;
         "dom.enable_web_task_scheduling" = true;
-        "layout.css.has-selector.enabled" = true;
-        "dom.security.sanitizer.enabled" = true;
         # SECUREFOX
         # TRACKING PROTECTION
         "browser.contentblocking.category" = "strict";
@@ -239,7 +185,6 @@
         # POCKET
         "extensions.pocket.enabled" = false;
         # DOWNLOADS
-        "browser.download.useDownloadDir" = false;
         "browser.download.always_ask_before_handling_new_types" = true;
         "browser.download.manager.addToRecentDocs" = false;
         # PDF
@@ -249,7 +194,6 @@
         "browser.menu.showViewImageInfo" = true;
         "findbar.highlightAll" = true;
         "layout.word_select.eat_space_to_next_word" = false;
-
         "intl.accept_languages" = "en-US, en, de";
       };
     };

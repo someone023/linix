@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  inputs,
+  ...
+}: {
   home.packages = with pkgs; [
     alejandra
     deadnix
@@ -12,8 +16,6 @@
     fzf
 
     bash
-
-    tree-sitter
     telescope
 
     # profiling tool
@@ -32,7 +34,7 @@
 
     # system call monitoring
     strace # system call monitoring
-    ltrace # library call monitoring
+    ltrace # library call monitoringecho nvim_get_runtime_file('parser', v:true
 
     lsof # list open files
 

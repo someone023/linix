@@ -8,6 +8,7 @@
     ./gui
     ./services
     ./terminal
+    ./editors/neovim.nix
   ];
 
   home = {

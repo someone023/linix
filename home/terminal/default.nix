@@ -1,9 +1,12 @@
 {
+  inputs,
+  system,
+  ...
+}: {
   imports = [
     ./yazi
     ./zsh
     #./wezterm
-    ./helix
 
     ./nix-index.nix
     ./btop.nix

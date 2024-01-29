@@ -2,7 +2,7 @@
   wayland.windowManager.hyprland.settings = {
     # layer rules
     layerrule = let
-      layers = "^(eww-.+|notifications|system-menu|anyrun|kitty|gtk-layer-shell|osd[0-9])$";
+      layers = "^(eww-.+|notifications|system-menu|anyrun|kitty|wezterm|gtk-layer-shell|osd[0-9])$";
     in [
       "blur, ${layers}"
       "xray 1, ^(bar|gtk-layer-shell)$"
@@ -12,8 +12,9 @@
 
     # window rules
     windowrulev2 = [
-      "noanim, class:neovide"
+      "noanim, class:(.*(eovide.*)$"
       "idleinhibit focus,class:kitty"
+      "idleinhibit focus,class:wezterm"
       "idleinhibit fullscreen, class:^(firefox)$"
 
       "float,class:udiskie"
@@ -32,6 +33,7 @@
       "workspace 2, class:^(firefox)$"
       "workspace 4 , title:^(.*Firefox.*)$"
       "workspace 5, title:^(.*(Disc|WebC)ord.*)$"
+      "workspace 1, title:^(.*(eovide.*)$"
 
       # fix xwayland apps
       "rounding 0, xwayland:1"

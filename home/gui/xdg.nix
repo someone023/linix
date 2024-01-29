@@ -24,7 +24,7 @@
     "image/*" = ["imv.desktop"];
     "application/json" = browser;
 
-    "text/plain" = ["Helix"];
+    "text/plain" = ["nvim"];
     "inode/directory" = ["yazi"];
   };
 in {
@@ -41,7 +41,6 @@ in {
       enable = true;
       createDirectories = true;
       documents = "${config.home.homeDirectory}/other";
-      download = "${config.home.homeDirectory}/download";
       videos = "${config.home.homeDirectory}/other";
       music = "${config.home.homeDirectory}/other";
       pictures = "${config.home.homeDirectory}/pics";
@@ -49,8 +48,10 @@ in {
       publicShare = "${config.home.homeDirectory}/other";
       templates = "${config.home.homeDirectory}/other";
     };
-    mimeApps.enable = true;
-    mimeApps.associations.added = associations;
-    mimeApps.defaultApplications = associations;
+    mimeApps = {
+      enable = true;
+      associations.added = associations;
+      defaultApplications = associations;
+    };
   };
 }

@@ -44,6 +44,7 @@ in {
         [
           "linix"
           "Downloads"
+          "dev"
           {
             directory = ".gnupg";
             mode = "0700";
@@ -53,13 +54,13 @@ in {
             mode = "0700";
           }
         ]
-        ++ forEach [] (
+        ++ forEach ["nvim"] (
           x: ".config/${x}"
         )
         ++ forEach ["nix" "starship" "nix-index" "tealdeer" "mozilla"] (
           x: ".cache/${x}"
         )
-        ++ forEach ["direnv" "keyrings"] (x: ".local/share/${x}")
+        ++ forEach ["direnv" "keyrings" "nvim/lazy/nvim-treesitter/parser"] (x: ".local/share/${x}")
         ++ [".ssh" ".keepass" ".mozilla"];
     };
   };

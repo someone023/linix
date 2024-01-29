@@ -148,7 +148,7 @@
 
       # If this is an xterm set the title to user@host:dir
       case "$TERM" in
-      xterm*|rxvt*|Eterm|aterm|kterm|gnome*|alacritty|kitty*)
+      xterm*|rxvt*|Eterm|aterm|kterm|gnome*|wezterm|kitty*)
         TERM_TITLE=$'\e]0;%n@%m: %1~\a'
           ;;
       *)
@@ -160,40 +160,29 @@
       # make sudo use aliases
       sudo = "sudo ";
       cd = "z";
-      # easy netcat alias for my fiche host
-      # https://github.com/solusipse/fiche
-      fbin = "${lib.getExe pkgs.netcat-gnu} p.frzn.dev 9999";
-      # nix specific aliases
-      cleanup = "sudo nix-collect-garbage --delete-older-than 3d && nix-collect-garbage -d";
+      cleanup = "sudo nix-collect-garbage --delete-older-than 1d && nix-collect-garbage -d";
       bloat = "nix path-info -Sh /run/current-system";
       curgen = "sudo nix-env --list-generations --profile /nix/var/nix/profiles/system";
       gc-check = "nix-store --gc --print-roots | egrep -v \"^(/nix/var|/run/\w+-system|\{memory|/proc)\"";
       repair = "nix-store --verify --check-contents --repair";
       run = "nix run $@";
-      search = "nix search $@";
       shell = "nix shell $@";
       # quality of life aliases
-      ytmp3 = ''
-        ${lib.getExe yt-dlp} -x --continue --add-metadata --embed-thumbnail --audio-format mp3 --audio-quality 0 --metadata-from-title="%(artist)s - %(title)s" --prefer-ffmpeg -o "%(title)s.%(ext)s"
-      '';
       cat = "${lib.getExe bat} --style=plain";
       grep = "${lib.getExe ripgrep}";
       du = "${lib.getExe du-dust}";
       ps = "${lib.getExe procs}";
-      mp = "mkdir -p";
       fcd = "cd $(find -type d | fzf)";
       ls = "${lib.getExe eza} -h --git --icons --color=auto --group-directories-first -s extension";
       l = "ls -lF --time-style=long-iso --icons";
-      # system aliases
       sc = "sudo systemctl";
       jc = "sudo journalctl";
       scu = "systemctl --user ";
       jcu = "journalctl --user";
       la = "${lib.getExe eza} -lah --tree";
       tree = "${lib.getExe eza} --tree --icons --tree";
-      http = "${lib.getExe python3} -m http.server";
-      burn = "pkill -9";
       diff = "diff --color=auto";
+      vim = "neovide";
       killall = "pkill";
 
       # faster navigation
@@ -243,16 +232,6 @@
           repo = "zsh-autopair";
           rev = "34a8bca0c18fcf3ab1561caef9790abffc1d3d49";
           sha256 = "1h0vm2dgrmb8i2pvsgis3lshc5b0ad846836m62y8h3rdb3zmpy1";
-        };
-      }
-      {
-        name = "fzf-tab";
-        file = "fzf-tab.plugin.zsh";
-        src = fetchFromGitHub {
-          owner = "Aloxaf";
-          repo = "fzf-tab";
-          rev = "426271fb1bbe8aa88ff4010ca4d865b4b0438d90";
-          sha256 = "sha256-RXqEW+jwdul2mKX86Co6HLsb26UrYtLjT3FzmHnwfAA=";
         };
       }
     ];

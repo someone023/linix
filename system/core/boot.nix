@@ -5,12 +5,10 @@
 }: {
   boot = {
     kernelParams = lib.mkAfter ["noquiet"];
-
     tmp = {
       cleanOnBoot = true;
       useTmpfs = false;
     };
-
     initrd = {
       systemd.enable = true;
       supportedFilesystems = ["ext4" "btrfs" "vfat"];
