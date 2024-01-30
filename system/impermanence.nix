@@ -60,7 +60,7 @@ in {
         ++ forEach ["nix" "starship" "nix-index" "tealdeer" "mozilla"] (
           x: ".cache/${x}"
         )
-        ++ forEach ["direnv" "keyrings" "nvim/lazy/nvim-treesitter/parser"] (x: ".local/share/${x}")
+        ++ forEach ["direnv" "keyrings"] (x: ".local/share/${x}")
         ++ [".ssh" ".keepass" ".mozilla"];
     };
   };

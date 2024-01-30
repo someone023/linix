@@ -1,5 +1,6 @@
 {
   description = "nix config";
+
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
@@ -12,14 +13,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    lazyvinix = {
-      url = "github:someone023/lazyvinix";
+    neovim-nightly-overlay = {
+      url = "github:nix-community/neovim-nightly-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
-
-
-
     };
-
 
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
@@ -45,13 +42,26 @@
     nixpkgs,
     ...
   } @ inputs: let
+    overlays = [
+      inputs.neovim-nightly-overlay.overlay
+    ];
+
+    system = "x86_64-linux";
+
+    pkgs = import nixpkgs {
+      inherit system overlays;
+    };
+
     inherit (self) outputs;
   in {
     nixosConfigurations = {
       linix = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = {inherit inputs outputs;};
+        inherit system;
+        specialArgs = {inherit inputs outputs pkgs;};
         modules = [
+          ({...}: {
+            nixpkgs.overlays = overlays;
+          })
           ./host
           ./system
         ];

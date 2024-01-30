@@ -9,6 +9,7 @@
   ];
 
   environment.systemPackages = with pkgs; [
+    sof-firmware
     lm_sensors
     # system tools
     sysstat
