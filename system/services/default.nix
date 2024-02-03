@@ -1,6 +1,6 @@
 {pkgs, ...}: {
   imports = [
-    ./greetd.nix
+    #./greetd.nix
     ./keyd.nix
     ./location.nix
     ./gnome-services.nix
