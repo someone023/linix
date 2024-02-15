@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{pkgs, lib, ...}: {
   programs.zsh.enable = true;
   users = {
     mutableUsers = false;

@@ -6,7 +6,7 @@
 
     impermanence.url = "github:nix-community/impermanence";
 
-    #helix.url = "github:helix-editor/helix";
+    helix.url = "github:helix-editor/helix";
 
     nix-index-db = {
       url = "github:Mic92/nix-index-database";
