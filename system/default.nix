@@ -13,7 +13,7 @@
     ./services
     ./core
     ./network
-    ./impermanence.nix
+    #./impermanence.nix
   ];
 
   home-manager = {

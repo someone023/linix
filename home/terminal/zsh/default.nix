@@ -5,7 +5,7 @@
   ];
 
   home.sessionVariables = {
-    EDITOR = "nvim";
+    EDITOR = "hx";
     DIRENV_LOG_FORMAT = "";
     NIXPKGS_ALLOW_UNFREE = 1;
   };

@@ -6,6 +6,5 @@
     ./fonts.nix
     ./nix.nix
     ./blacklist.nix
-    ./firefox-tmpfs.nix
   ];
 }
