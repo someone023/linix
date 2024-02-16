@@ -1,4 +1,8 @@
-{pkgs, lib, ...}: {
+{
+  pkgs,
+  lib,
+  ...
+}: {
   programs.zsh.enable = true;
   users = {
     mutableUsers = false;
@@ -8,7 +12,7 @@
         hashedPassword = "$6$Oa4rGIfOC2.fPaZb$A4./GBWLPxyHO/nNs/yVJAHKP9Z2qZ.3QPaFwDf4NAMqYyXgtmkeGK7WN4qyEDfRwIAagEEt.SxgYDeYe6EGo/";
         shell = pkgs.zsh;
         openssh.authorizedKeys.keys = [
-          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIL5ZY9YFo+mx7hUW/0t1/W3hEnam1QKQDrA7Drqf5spx wasd"
+          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOgl64iFlij3ZrTaQHYVoP5Aa541gmBLUDwMRY4ZsF7p someone023"
         ];
         extraGroups = ["input" "libvirtd" "networkmanager" "plugdev" "transmission" "video" "wheel" "systemd-journal" "power" "nix"];
       };
