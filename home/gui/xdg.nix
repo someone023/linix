@@ -24,8 +24,8 @@
     "image/*" = ["imv.desktop"];
     "application/json" = browser;
 
-    "text/plain" = ["hx"];
-    "inode/directory" = ["yazi"];
+    "text/plain" = ["nvim"];
+    #"inode/directory" = ["yazi"];
   };
 in {
   xdg = {

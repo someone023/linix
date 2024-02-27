@@ -28,7 +28,7 @@
       package = pkgs.gitAndTools.gitFull;
       enable = true;
       userEmail = "a.erkol@tu-braunschweig.de";
-      userName = "Ali Erkol";
+      userName = "someone023";
 
       extraConfig = {
         delta = {

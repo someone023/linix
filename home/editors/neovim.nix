@@ -8,6 +8,6 @@
     #plugins = with pkgs.vimPlugins; [
     #];
 
-    extraPackages = with pkgs; [ripgrep fd nixd stylua lua-language-server alejandra gnumake tree-sitter clang-tools];
+    extraPackages = with pkgs; [ripgrep fd nixd stylua lua-language-server alejandra gnumake tree-sitter];
   };
 }

@@ -4,7 +4,7 @@
   ...
 }: {
   imports = [
-    ./yazi
+    #./yazi
     ./zsh
     #./wezterm
 

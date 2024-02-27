@@ -1,7 +1,7 @@
 {
     
   imports = [
-    ./helix
+    #./helix
+    ./neovim.nix
   ];
-
   }
