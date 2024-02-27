@@ -40,6 +40,7 @@ in {
     files = ["/etc/machine-id"];
 
     users.wasd = {
+      allowOther = true;
       directories =
         [
           "linix"
