@@ -45,9 +45,16 @@
 
       sandbox = true;
 
+      # whether to accept nix configuration from a flake without prompting
+      accept-flake-config = true;
+      # execute builds inside cgroups
+      use-cgroups = true;
+
       allowed-users = ["root" "@wheel"];
       # only allow sudo users to manage the nix store
       trusted-users = ["root" "@wheel" "wasd"];
+
+      system-features = ["nixos-test" "kvm" "recursive-nix" "big-parallel"];
 
       #keep-going = true;
 
@@ -61,20 +68,34 @@
       experimental-features = "nix-command flakes";
 
       # Deduplicate and optimize nix store
-      #auto-optimise-store = true;
+      auto-optimise-store = true;
+
+      extra-experimental-features = [
+        "flakes" # flakes
+        "nix-command" # experimental nix commands
+        "recursive-nix" # let nix invoke itself
+        "ca-derivations" # content addressed nix
+        "repl-flake" # allow passing installables to nix repl
+        "auto-allocate-uids" # allow nix to automatically pick UIDs, rather than creating nixbld* user accounts
+        "configurable-impure-env" # allow impure environments
+        "cgroups" # allow nix to execute builds inside cgroups
+        "git-hashing" # allow store objects which are hashed via Git's hashing algorithm
+        "verified-fetches" # enable verification of git commit signatures for fetchGit
+      ];
+
 
       substituters = [
         "https://nix-community.cachix.org"
         "https://hyprland.cachix.org"
         "https://anyrun.cachix.org"
-        "https://helix.cachix.org"
+        "https://nixpkgs-wayland.cachix.org"
       ];
 
       trusted-public-keys = [
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
         "anyrun.cachix.org-1:pqBobmOjI7nKlsUMV25u9QHa9btJK65/C8vnO3p346s="
         "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
-        "helix.cachix.org-1:ejp9KQpR1FBI2onstMQ34yogDm4OgU2ru6lIwPvuCVs="
+        "nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA="
       ];
     };
   };
