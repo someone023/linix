@@ -77,10 +77,7 @@
         "ca-derivations" # content addressed nix
         "repl-flake" # allow passing installables to nix repl
         "auto-allocate-uids" # allow nix to automatically pick UIDs, rather than creating nixbld* user accounts
-        "configurable-impure-env" # allow impure environments
         "cgroups" # allow nix to execute builds inside cgroups
-        "git-hashing" # allow store objects which are hashed via Git's hashing algorithm
-        "verified-fetches" # enable verification of git commit signatures for fetchGit
       ];
 
 

@@ -35,7 +35,7 @@ in {
       [
         "/var/db/sudo"
       ]
-      ++ forEach ["nixos" "iwd" "systemd" "nix" "ssh" "secureboot"] (x: "/etc/${x}")
+      ++ forEach [ "iwd" "systemd" "nix" "ssh" "secureboot"] (x: "/etc/${x}")
       ++ forEach ["iwd" "pipewire" "libvirt" "systemd"] (x: "/var/lib/${x}");
     files = ["/etc/machine-id"];
 
