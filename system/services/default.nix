@@ -29,12 +29,7 @@
     };
     psd = {
       enable = true;
-      resyncTimer = "10m";
-    };
-
-    xserver = {
-      layout = "de";
-      xkbVariant = "us";
+      resyncTimer = "60m";
     };
   };
   console = {

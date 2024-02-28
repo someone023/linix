@@ -10,8 +10,6 @@
       extraPolicies = {
         DisableFirefoxStudies = true;
 
-
-
         DisablePocket = true;
         DisableTelemetry = true;
         PromptForDownloadLocation = true;

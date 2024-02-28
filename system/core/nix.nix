@@ -80,7 +80,6 @@
         "cgroups" # allow nix to execute builds inside cgroups
       ];
 
-
       substituters = [
         "https://nix-community.cachix.org"
         "https://hyprland.cachix.org"

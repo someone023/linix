@@ -35,12 +35,11 @@ in {
       [
         "/var/db/sudo"
       ]
-      ++ forEach [ "iwd" "systemd" "nix" "ssh" "secureboot"] (x: "/etc/${x}")
+      ++ forEach ["iwd" "systemd" "nix" "ssh" "secureboot"] (x: "/etc/${x}")
       ++ forEach ["iwd" "pipewire" "libvirt" "systemd"] (x: "/var/lib/${x}");
     files = ["/etc/machine-id"];
 
     users.wasd = {
-      allowOther = true;
       directories =
         [
           "linix"
@@ -61,7 +60,7 @@ in {
         ++ forEach ["nix" "starship" "nix-index" "tealdeer" "mozilla"] (
           x: ".cache/${x}"
         )
-        ++ forEach ["direnv" "keyrings"] (x: ".local/share/${x}")
+        ++ forEach ["direnv" "keyrings" "nvim" "zoxide"] (x: ".local/share/${x}")
         ++ [".ssh" ".keepass" ".mozilla"];
     };
   };

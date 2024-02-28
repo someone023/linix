@@ -50,3 +50,4 @@ function unset_zsh_options() {
 # Call the functions to set and unset Zsh options
 set_zsh_options
 unset_zsh_options
+

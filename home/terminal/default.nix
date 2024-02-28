@@ -5,7 +5,7 @@
 }: {
   imports = [
     #./yazi
-    ./zsh
+    ./shell
     #./wezterm
 
     ./nix-index.nix
