@@ -3,8 +3,11 @@
   lib,
   ...
 }: {
-  programs.fuse.userAllowOther = true;
-  programs.zsh.enable = true;
+  programs = {
+    fuse.userAllowOther = true;
+    zsh.enable = true;
+    dconf.enable = true;
+  };
   users = {
     mutableUsers = false;
     users = {

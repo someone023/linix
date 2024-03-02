@@ -25,7 +25,10 @@
       wasd = import ../home;
     };
   };
-
+  boot.tmp = {
+    cleanOnBoot = true;
+    useTmpfs = false;
+  };
   i18n = let
     defaultLocale = "en_US.UTF-8";
     de = "de_DE.utf8";

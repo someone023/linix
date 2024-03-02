@@ -1,14 +1,17 @@
-{
+{lib, ...}: {
   services = {
     openssh = {
       enable = true;
-      openFirewall = true;
       startWhenNeeded = true;
       settings = {
-        #UseDns = true;
-        PermitRootLogin = "no";
-        PasswordAuthentication = false;
+        PermitRootLogin = lib.mkForce "yes";
+        UseDns = false;
+        X11Forwarding = false;
+        PasswordAuthentication = lib.mkForce false;
+        KbdInteractiveAuthentication = false;
       };
+      openFirewall = true;
+      ports = [22];
       hostKeys = [
         {
           bits = 4096;
@@ -16,7 +19,6 @@
           type = "rsa";
         }
         {
-          bits = 4096;
           path = "/etc/ssh/ssh_host_ed25519_key";
           type = "ed25519";
         }

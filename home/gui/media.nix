@@ -4,6 +4,7 @@
     # images
     imv
     libcaca
+    pavucontrol
   ];
   #TODO import media
   programs = {
