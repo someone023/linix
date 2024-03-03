@@ -4,17 +4,13 @@
   ...
 }: {
   home.packages = with pkgs; [
-    alejandra
     deadnix
     statix
 
     # grep replacement
     ripgrep
-    # neofetch but for git repos
-    onefetch
 
     fzf
-
     bash
     telescope
 

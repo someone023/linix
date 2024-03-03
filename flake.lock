@@ -54,22 +54,6 @@
         "url": "https://flakehub.com/f/zhaofengli/attic/0.1.%2A.tar.gz"
       }
     },
-    "base16-schemes": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1696158499,
-        "narHash": "sha256-5yIHgDTPjoX/3oDEfLSQ0eJZdFL1SaCfb9d6M0RmOTM=",
-        "owner": "tinted-theming",
-        "repo": "base16-schemes",
-        "rev": "a9112eaae86d9dd8ee6bb9445b664fba2f94037a",
-        "type": "github"
-      },
-      "original": {
-        "owner": "tinted-theming",
-        "repo": "base16-schemes",
-        "type": "github"
-      }
-    },
     "chaotic": {
       "inputs": {
         "attic": "attic",
@@ -90,12 +74,12 @@
         "yafas": "yafas"
       },
       "locked": {
-        "lastModified": 1709404342,
-        "narHash": "sha256-mDVOKW0rWQ/ntTmp9JY47/Fq48A6RaDkY4x5Mizj+sg=",
-        "rev": "1c8a5091186cf93fb3d9bb0cfa3945bd28a7c868",
-        "revCount": 969,
+        "lastModified": 1709456193,
+        "narHash": "sha256-D5mZ3wX/ZTzD8ipb9qGwytH2i38atFIoY7vhcbtamBA=",
+        "rev": "abc26396a79890f65379fead25fe06769dd116d3",
+        "revCount": 971,
         "type": "tarball",
-        "url": "https://api.flakehub.com/f/pinned/chaotic-cx/nyx/0.1.969%2Brev-1c8a5091186cf93fb3d9bb0cfa3945bd28a7c868/018e0087-66d8-76c2-9c77-7ad2faedb8a4/source.tar.gz"
+        "url": "https://api.flakehub.com/f/pinned/chaotic-cx/nyx/0.1.971%2Brev-abc26396a79890f65379fead25fe06769dd116d3/018e0391-a0a9-7114-b0f9-255a53d10a19/source.tar.gz"
       },
       "original": {
         "type": "tarball",
@@ -350,11 +334,11 @@
     },
     "hardware": {
       "locked": {
-        "lastModified": 1709147990,
-        "narHash": "sha256-vpXMWoaCtMYJ7lisJedCRhQG9BSsInEyZnnG5GfY9tQ=",
+        "lastModified": 1709410583,
+        "narHash": "sha256-esOSUoQ7mblwcsSea0K17McZuwAIjoS6dq/4b83+lvw=",
         "owner": "nixos",
         "repo": "nixos-hardware",
-        "rev": "33a97b5814d36ddd65ad678ad07ce43b1a67f159",
+        "rev": "59e37017b9ed31dee303dbbd4531c594df95cfbc",
         "type": "github"
       },
       "original": {
@@ -412,11 +396,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1709204054,
-        "narHash": "sha256-U1idK0JHs1XOfSI1APYuXi4AEADf+B+ZU4Wifc0pBHk=",
+        "lastModified": 1709445365,
+        "narHash": "sha256-DVv6nd9FQBbMWbOmhq0KVqmlc3y3FMSYl49UXmMcO+0=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "2f3367769a93b226c467551315e9e270c3f78b15",
+        "rev": "4de84265d7ec7634a69ba75028696d74de9a44a7",
         "type": "github"
       },
       "original": {
@@ -437,11 +421,11 @@
         "xdph": "xdph"
       },
       "locked": {
-        "lastModified": 1709405597,
-        "narHash": "sha256-pS8DFuDekYvnKEsA/44K2LuASSxzef54dz5zuIUbYGg=",
+        "lastModified": 1709432286,
+        "narHash": "sha256-ayIGbX4W6bYFo+F3h9JeCfKUhw/8taO0/0i/kRLQ4r4=",
         "owner": "hyprwm",
         "repo": "Hyprland",
-        "rev": "d2289d8327d46e6b55c06b3c639fc138c3e02d1a",
+        "rev": "cc94123fa7d45e816327b4b8c8592589313f4718",
         "type": "github"
       },
       "original": {
@@ -620,11 +604,11 @@
       },
       "locked": {
         "dir": "contrib",
-        "lastModified": 1709335880,
-        "narHash": "sha256-npzdh3iY1Ku0NTFxntvNgMpJbLBIzbDfGtKyTbv90T4=",
+        "lastModified": 1709389313,
+        "narHash": "sha256-c6i3Jq5Z5kqK5xOBQOso/C1DTrkgVzKMpzkPWFY1igA=",
         "owner": "neovim",
         "repo": "neovim",
-        "rev": "39928a7f24916b35577864e28e505dda74103fb8",
+        "rev": "dc8c086c7e73a9035c34be6416e7c465d61edc0e",
         "type": "github"
       },
       "original": {
@@ -645,11 +629,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1709337958,
-        "narHash": "sha256-qhN8FJh+7SIk3CgRMHO3+zQwZn5wRkeQuBOWnYb7xoQ=",
+        "lastModified": 1709424235,
+        "narHash": "sha256-znvi6iSclLj9VpJspgw1x/ODCFsiuRIY8dk9vqR5qNM=",
         "owner": "nix-community",
         "repo": "neovim-nightly-overlay",
-        "rev": "d1d32c4fe1324f55c2206d419d5f745c5dc0410c",
+        "rev": "22225800f7c24e7460026a5b6c9c94187d67555f",
         "type": "github"
       },
       "original": {
@@ -692,25 +676,6 @@
       "original": {
         "owner": "YaLTeR",
         "repo": "niri",
-        "type": "github"
-      }
-    },
-    "nix-colors": {
-      "inputs": {
-        "base16-schemes": "base16-schemes",
-        "nixpkgs-lib": "nixpkgs-lib"
-      },
-      "locked": {
-        "lastModified": 1707825078,
-        "narHash": "sha256-hTfge2J2W+42SZ7VHXkf4kjU+qzFqPeC9k66jAUBMHk=",
-        "owner": "misterio77",
-        "repo": "nix-colors",
-        "rev": "b01f024090d2c4fc3152cd0cf12027a7b8453ba1",
-        "type": "github"
-      },
-      "original": {
-        "owner": "misterio77",
-        "repo": "nix-colors",
         "type": "github"
       }
     },
@@ -759,11 +724,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1708830466,
-        "narHash": "sha256-nGKe3Y1/jkLR2eh1aRSVBtKadMBNv8kOnB52UXqRy6A=",
+        "lastModified": 1709435391,
+        "narHash": "sha256-s4itTkIVxn5lYeTzwkbAgl99atnjdZv1idI1118vdzA=",
         "owner": "Mic92",
         "repo": "nix-index-database",
-        "rev": "f070c7eeec3bde8c8c8baa9c02b6d3d5e114d73b",
+        "rev": "93554c04c2f1c02f4a383538e8848d511c3129e9",
         "type": "github"
       },
       "original": {
@@ -784,21 +749,6 @@
       "original": {
         "type": "tarball",
         "url": "https://flakehub.com/f/NixOS/nixpkgs/0.1.%2A.tar.gz"
-      }
-    },
-    "nixpkgs-lib": {
-      "locked": {
-        "lastModified": 1697935651,
-        "narHash": "sha256-qOfWjQ2JQSQL15KLh6D7xQhx0qgZlYZTYlcEiRuAMMw=",
-        "owner": "nix-community",
-        "repo": "nixpkgs.lib",
-        "rev": "e1e11fdbb01113d85c7f41cada9d2847660e3902",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-community",
-        "repo": "nixpkgs.lib",
-        "type": "github"
       }
     },
     "nixpkgs-stable": {
@@ -858,7 +808,6 @@
         "hyprland": "hyprland",
         "impermanence": "impermanence",
         "neovim-nightly-overlay": "neovim-nightly-overlay",
-        "nix-colors": "nix-colors",
         "nix-index-db": "nix-index-db",
         "nixpkgs": "nixpkgs_2",
         "xdg-portal-hyprland": "xdg-portal-hyprland"

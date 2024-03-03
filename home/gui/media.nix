@@ -6,7 +6,7 @@
     libcaca
     pavucontrol
   ];
-  #TODO import media
+
   programs = {
     mpv = {
       enable = true;

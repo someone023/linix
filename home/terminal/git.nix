@@ -4,9 +4,6 @@
   ...
 }: {
   home.packages = with pkgs; [
-    act # local github actions
-    zsh-forgit # zsh plugin to load forgit via `git forgit`
-    gitflow
     lazygit
   ];
   programs = {

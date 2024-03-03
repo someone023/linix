@@ -29,6 +29,4 @@
       systemd-boot.enable = true;
     };
   };
-  environment.systemPackages = [inputs.chaotic.packages.${pkgs.system}.scx];
-  chaotic.scx.scheduler = "scx_rusty";
 }

@@ -14,6 +14,11 @@
       implementation = "broker";
     };
 
+    journald.extraConfig = ''
+      SystemMaxUse=50M
+      RuntimeMaxUse=10M
+    '';
+
     fwupd = {
       enable = true;
     };

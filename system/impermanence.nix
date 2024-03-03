@@ -6,24 +6,28 @@
 }: let
   inherit (lib) forEach;
   wipeScript = ''
-    mkdir /tmp -p
-    MNTPOINT=$(mktemp -d)
-    (
-      mount -t btrfs -o subvol=/ /dev/disk/by-label/NIXOS "$MNTPOINT"
-      trap 'umount "$MNTPOINT"' EXIT
 
-      echo "Creating needed directories"
-      mkdir -p "$MNTPOINT"/persist/var/{log,lib/{nixos,systemd}}
+     mkdir -p /mnt
 
-      echo "Cleaning root subvolume"
-      btrfs subvolume list -o "$MNTPOINT/root" | cut -f9 -d ' ' |
-      while read -r subvolume; do
-        btrfs subvolume delete "$MNTPOINT/$subvolume"
-      done && btrfs subvolume delete "$MNTPOINT/root"
+    # We first mount the btrfs root to /mnt
+    # so we can manipulate btrfs subvolumes.
+    mount -o subvol=/ /dev/disk/by-label/NIXOS /mnt
 
-      echo "Restoring blank subvolume"
-      btrfs subvolume snapshot "$MNTPOINT/root-blank" "$MNTPOINT/root"
-    )
+    btrfs subvolume list -o /mnt/root |
+      cut -f9 -d' ' |
+      while read subvolume; do
+        echo "deleting /$subvolume subvolume..."
+        btrfs subvolume delete "/mnt/$subvolume"
+      done &&
+      echo "deleting /root subvolume..." &&
+      btrfs subvolume delete /mnt/root
+
+    echo "restoring blank /root subvolume..."
+    btrfs subvolume snapshot /mnt/root-blank /mnt/root
+
+    # Once we're done rolling back to a blank snapshot,
+    # we can unmount /mnt and continue on the boot process.
+    umount /mnt
   '';
   phase1Systemd = config.boot.initrd.systemd.enable;
 in {
@@ -33,36 +37,14 @@ in {
     hideMounts = true;
     directories =
       [
-        "/var/db/sudo"
+        {
+          directory = "/var/lib/iwd";
+          mode = "u=rwx,g=,o=";
+        }
       ]
-      ++ forEach ["iwd" "systemd" "nix" "ssh" "secureboot"] (x: "/etc/${x}")
-      ++ forEach ["iwd" "pipewire" "libvirt" "systemd"] (x: "/var/lib/${x}");
+      ++ forEach ["iwd" "systemd" "nix" "ssh"] (x: "/etc/${x}")
+      ++ forEach ["pipewire" "sudo" "systemd"] (x: "/var/lib/${x}");
     files = ["/etc/machine-id"];
-
-    users.wasd = {
-      directories =
-        [
-          "linix"
-          "Downloads"
-          "dev"
-          {
-            directory = ".gnupg";
-            mode = "0700";
-          }
-          {
-            directory = ".local/nix";
-            mode = "0700";
-          }
-        ]
-        ++ forEach ["nvim"] (
-          x: ".config/${x}"
-        )
-        ++ forEach ["nix" "starship" "nix-index" "tealdeer" "mozilla"] (
-          x: ".cache/${x}"
-        )
-        ++ forEach ["direnv" "keyrings" "nvim" "zoxide"] (x: ".local/share/${x}")
-        ++ [".ssh" ".keepass" ".mozilla"];
-    };
   };
 
   boot.initrd = {
