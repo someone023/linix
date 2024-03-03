@@ -4,7 +4,9 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
-    chaotic.url = "https://flakehub.com/f/chaotic-cx/nyx/*.tar.gz";
+    chaotic = {
+      url = "https://flakehub.com/f/chaotic-cx/nyx/*.tar.gz";
+    };
 
     impermanence.url = "github:nix-community/impermanence";
 

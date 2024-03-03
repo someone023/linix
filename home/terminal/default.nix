@@ -6,7 +6,6 @@
   imports = [
     #./yazi
     ./shell
-    #./wezterm
 
     ./nix-index.nix
     ./btop.nix
