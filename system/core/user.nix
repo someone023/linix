@@ -8,12 +8,13 @@
     zsh.enable = true;
     dconf.enable = true;
   };
+
   users = {
     mutableUsers = false;
     users = {
       wasd = {
         isNormalUser = true;
-        hashedPassword = "$6$Oa4rGIfOC2.fPaZb$A4./GBWLPxyHO/nNs/yVJAHKP9Z2qZ.3QPaFwDf4NAMqYyXgtmkeGK7WN4qyEDfRwIAagEEt.SxgYDeYe6EGo/";
+        hashedPasswordFile = "/persist/secrets/wasd";
         shell = pkgs.zsh;
         openssh.authorizedKeys.keys = [
           "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBM0GCFnOpqMwYc9HN288uyCkl1qqUs193JqwEV3MJth someone023"
