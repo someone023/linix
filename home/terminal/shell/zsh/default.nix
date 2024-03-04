@@ -4,9 +4,7 @@
   pkgs,
   lib,
   ...
-}: let
-  inherit (osConfig.modules.style.colorScheme) colors;
-in {
+}: {
   programs.zsh = {
     enable = true;
     dotDir = ".config/zsh";
@@ -188,7 +186,7 @@ in {
       l = "ls -lF --time-style=long-iso --icons";
       # system aliases
       sc = "sudo systemctl";
-      jc = "sudo journalctl";
+      jc = "sudo journalctl -b -p err";
       scu = "systemctl --user ";
       jcu = "journalctl --user";
       tree = "${lib.getExe eza} --tree --icons=always";
@@ -197,15 +195,6 @@ in {
       diff = "diff --color=auto";
       killall = "pkill";
 
-      # insteaed of querying some weird and random"what is my ip" service
-      # we get our public ip by querying opendns directly.
-      # <https://unix.stackexchange.com/a/81699>
-      canihazip = "dig @resolver4.opendns.com myip.opendns.com +short";
-      canihazip4 = "dig @resolver4.opendns.com myip.opendns.com +short -4";
-      canihazip6 = "dig @resolver1.ipv6-sandbox.opendns.com AAAA myip.opendns.com +short -6";
-
-      # faster navigation
-      # "lmao"
       ".." = "cd ..";
       "..." = "cd ../../";
       "...." = "cd ../../../";
@@ -224,7 +213,6 @@ in {
         src = zsh-vi-mode;
         file = "share/zsh-vi-mode/zsh-vi-mode.plugin.zsh";
       }
-
       {
         name = "fast-syntax-highlighting";
         file = "fast-syntax-highlighting.plugin.zsh";
